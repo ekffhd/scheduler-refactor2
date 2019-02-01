@@ -1,5 +1,5 @@
 <template>
-    <div id="pin_category_lecture_list">
+    <div id="option_category_lecture_list">
         <div id="category_wrap">
             <div id="angle_left_icon_wrap" @click="up_layer">
                 <i class="fas fa-angle-left"></i>
@@ -9,21 +9,10 @@
             </div>
         </div>
         <div id="category_lecture_list">
-            <div id="lecture_data" v-for="(lecture, index) in search_data" @click="add_pin_lecture(lecture)" :key="index">
+            <div id="lecture_data" v-for="(lecture, index) in search_data" @click="add_option_lecture(lecture)" :key="index">
                 <div id="lecture_title"> <div class="wrap" style="margin-top: 5%; height: 95%;"><div class="inner">{{lecture.title}}</div></div> </div>
                 <div id="lecture_info">
-                    {{lecture.professor}} &nbsp; {{lecture.classroom}} &nbsp; {{lecture.point}} 학점
-                </div>
-                <div id="lecture_time_wrap">
-                    <div class="wrap">
-                        <div class="inner" style="text-align: center;">
-                            <div id="lecture_time" v-for="(time, index) in lecture.timetable" :key="index">
-                                {{time.day}} {{time.start.split(":")[0]+":"+time.start.split(":")[1]}}~{{time.end.split(":")[0]+":"+time.end.split(":")[1]}}
-                            </div>
-                        </div>
-
-                    </div>
-
+                    {{lecture.code}} {{lecture.point}}학점
                 </div>
             </div>
         </div>
@@ -33,7 +22,7 @@
 
 <script>
     export default {
-        name: "PinCategoryLectureList",
+        name: "OptionCategoryLectureList",
         props: ['category', 'sub_category'],
         data(){
             return{
@@ -123,10 +112,10 @@
             }
         },
         methods:{
-            add_pin_lecture(lecture){
-                this.$store.dispatch('ADD_PIN_LECTURE', lecture);
+            add_option_lecture(lecture){
+                this.$store.dispatch('ADD_OPTION_LECTURE', lecture);
                 if(lecture.out.status === "succeed"){
-                    this.$bus.$emit('add_pin_lecture',lecture);
+                    this.$bus.$emit('add_option_lecture',lecture);
                 }
             },
             up_layer(){
@@ -141,18 +130,18 @@
         margin: 0;
         padding: 0;
     }
-    #pin_category_lecture_list{
+    #option_category_lecture_list{
         display: inline-block;
         height: 100%;
     }
     #category_wrap{
-        height: 8%;
         font-size: 18px;
         font-weight: bold;
-        margin-top: 3%;
-        padding-bottom: 3%;
-        border-bottom: 1px solid #353866;;
-        margin-bottom: 2%;
+        margin-top: 10px;
+        padding-bottom: 5px;
+        margin-bottom: 4px;
+        height: 30px;
+        border-bottom: 1px solid #353866;
     }
     #angle_left_icon_wrap{
         display: inline-block;
@@ -165,12 +154,12 @@
         display: inline-block;
         width: 80%;
         text-align: left;
-        color: #353866;
+
     }
 
     #category_lecture_list{
         display: inline-block;
-        height: 82%;
+        height: calc(100% - 50px);
         overflow-y: scroll;
     }
 
@@ -179,10 +168,10 @@
         border: 2px solid #aaabd3;
         border-radius: 10px;
         width: 80%;
-        height: 27.5%;
+        height: 28%;
         padding-left: 15px;
         padding-right: 15px;
-        margin-bottom: 5px;
+        color: #566270;
     }
     #lecture_data:hover{
         border: 2px solid #353866;

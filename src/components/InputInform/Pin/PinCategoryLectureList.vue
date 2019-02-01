@@ -146,13 +146,13 @@
         height: 100%;
     }
     #category_wrap{
-        height: 8%;
         font-size: 18px;
         font-weight: bold;
-        margin-top: 3%;
-        padding-bottom: 3%;
-        border-bottom: 1px solid #353866;;
-        margin-bottom: 2%;
+        margin-top: 10px;
+        padding-bottom: 5px;
+        margin-bottom: 4px;
+        height: 30px;
+        border-bottom: 1px solid #353866;
     }
     #angle_left_icon_wrap{
         display: inline-block;
@@ -170,7 +170,7 @@
 
     #category_lecture_list{
         display: inline-block;
-        height: 82%;
+        height: calc(100% - 50px);
         overflow-y: scroll;
     }
 
@@ -179,10 +179,11 @@
         border: 2px solid #aaabd3;
         border-radius: 10px;
         width: 80%;
-        height: 27.5%;
+        height: 28%;
         padding-left: 15px;
         padding-right: 15px;
         margin-bottom: 5px;
+        color: #566270;
     }
     #lecture_data:hover{
         border: 2px solid #353866;

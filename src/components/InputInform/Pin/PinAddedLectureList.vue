@@ -24,12 +24,12 @@
         },
         methods:{
             add_pin_lecture(){
-                this.added_lectures=this.$store.getters.GET_LECTURES;
+                this.added_lectures=this.$store.getters.GET_PIN_LECTURES;
             },
             sub_pin_lecture(lecture){
                 this.$store.dispatch('SUB_PIN_LECTURE', lecture);
                 this.$bus.$emit('sub_pin_lecture',lecture);
-                this.added_lectures=this.$store.getters.GET_LECTURES;
+                this.added_lectures=this.$store.getters.GET_PIN_LECTURES;
             }
         }
     }

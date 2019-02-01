@@ -1,5 +1,5 @@
 <template>
-    <div id="pin_sub_category_list">
+    <div id="option_sub_category_list">
         <div id="category_wrap">
             <div id="angle_left_icon_wrap">
                 <i class="fas fa-angle-left" @click="up_layer"></i>
@@ -24,7 +24,7 @@
 
 <script>
     export default {
-        name: "PinSubCategoryList",
+        name: "OptionSubCategoryList",
         props:['category'],
         data(){
             return{
@@ -47,17 +47,17 @@
         margin: 0;
         padding: 0;
     }
-    #pin_sub_category_list{
+    #option_sub_category_list{
         display: inline-block;
         width: 100%;
         height: 100%;
     }
     #category_wrap{
-        height: 8%;
         font-size: 18px;
         font-weight: bold;
-        margin-top: 3%;
-        padding-bottom: 3%;
+        margin-top: 10px;
+        padding-bottom: 5px;
+        height: 30px;
         border-bottom: 1px solid #353866;
     }
     #angle_left_icon_wrap{

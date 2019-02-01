@@ -1,33 +1,25 @@
 <template>
-    <div id="pin_search_lecture_wrap">
-        <div id="pin_search_input_form_wrap">
+    <div id="option_search_lecture_wrap">
+        <div id="option_search_input_form_wrap">
             <form>
                 <input id="search_input" placeholder="과목명/교수님성함" type="text" class="search_input"/>
                 <i id="search_icon" class="fas fa-search"></i>
                 <!--
                 <transition  name="fade" id="fade">
                     <div class="loading" v-show="loading">
-                        <span class="fa fa-spinner fa-spin"></span> Loading
+                        <span class="fa fa-soptionner fa-soption"></span> Loading
                     </div>
                 </transition>
                 -->
             </form>
         </div>
-        <div id="pin_search_lecture_list">
-            <div id="lecture_data" v-for="(lecture, index) in search_data" @click="add_pin_lecture(lecture)" :key="index">
+        <div id="option_search_lecture_list">
+            <div id="lecture_data" v-for="(lecture, index) in search_data" @click="add_option_lecture(lecture)" :key="index">
                 <div id="lecture_title"> <div class="wrap" style="margin-top: 5%; height: 95%;"><div class="inner">{{lecture.title}}</div></div> </div>
                 <div id="lecture_info">
-                        {{lecture.professor}} &nbsp; {{lecture.classroom}} &nbsp; {{lecture.point}} 학점
+                        {{lecture.code}} {{lecture.point}}학점
                 </div>
-                <div id="lecture_time_wrap">
-                    <div class="wrap">
-                        <div class="inner" style="text-align: center;">
-                            <div id="lecture_time" v-for="(time, index) in lecture.timetable" :key="index">
-                                {{time.day}} {{time.start.split(":")[0]+":"+time.start.split(":")[1]}}~{{time.end.split(":")[0]+":"+time.end.split(":")[1]}}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>
@@ -35,7 +27,7 @@
 
 <script>
     export default {
-        name: "PinSearchLecture",
+        name: "OptionSearchLecture",
         data(){
             return{
                 search_data:[
@@ -124,10 +116,10 @@
             }
         },//data
         methods:{
-            add_pin_lecture(lecture){
-                this.$store.dispatch('ADD_PIN_LECTURE', lecture);
+            add_option_lecture(lecture){
+                this.$store.dispatch('ADD_OPTION_LECTURE', lecture);
                 if(lecture.out.status === "succeed"){
-                    this.$bus.$emit('add_pin_lecture',lecture);
+                    this.$bus.$emit('add_option_lecture',lecture);
                 }
             }
         }
@@ -139,14 +131,14 @@
         margin: 0;
         padding: 0;
     }
-    #pin_search_lecture_wrap{
+    #option_search_lecture_wrap{
         display: inline-block;
         margin-top: 1px;
         background-color: white;
         color: #566270;
         height: calc(100% - 1px);
     }
-    #pin_search_input_form_wrap{
+    #option_search_input_form_wrap{
         display: inline-block;
         border: none;
         background-color: white;
@@ -155,8 +147,8 @@
         margin: auto;
         margin-top: 10px;
         margin-bottom: 10px;
-        width: 90%;
         height: 30px;
+        width: 90%;
     }
 
     #search_input{
@@ -170,7 +162,7 @@
     #search_icon{
         color: #aaabd3;
     }
-    #pin_search_lecture_list{
+    #option_search_lecture_list{
         height: calc(100% - 50px);
         overflow-y: scroll;
     }
@@ -183,7 +175,6 @@
         height: 28%;
         padding-left: 15px;
         padding-right: 15px;
-        margin-bottom: 5px;
         cursor: pointer;
     }
     #lecture_data:hover{

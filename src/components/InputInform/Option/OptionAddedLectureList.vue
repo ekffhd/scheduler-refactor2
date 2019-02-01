@@ -1,18 +1,17 @@
 <template>
-
-    <div id="pin_added_lecture_list">
-        <div id="lecture_data_wrap" v-for="(lecture, index) in added_lectures" :key="index" @click="sub_pin_lecture(lecture)">
-            <pin-lecture-data :lecture="lecture" ></pin-lecture-data>
+    <div id="option_added_lecture_list">
+        <div id="lecture_data_wrap" v-for="(lecture, index) in added_lectures" :key="index" @click="sub_option_lecture(lecture)">
+            <option-lecture-data :lecture="lecture" ></option-lecture-data>
         </div>
     </div>
 </template>
 
 <script>
-    import PinLectureData from './PinAddedLectureData'
+    import OptionLectureData from './OptionAddedLectureData'
     export default {
-        name: "PinAddedLectureList",
+        name: "OptionAddedLectureList",
         components:{
-            'pin-lecture-data': PinLectureData
+            'option-lecture-data': OptionLectureData
         },
         data(){
             return {
@@ -20,16 +19,16 @@
             }
         },
         mounted(){
-            this.$bus.$on('add_pin_lecture', this.add_pin_lecture);
+            this.$bus.$on('add_option_lecture', this.add_option_lecture);
         },
         methods:{
-            add_pin_lecture(){
-                this.added_lectures=this.$store.getters.GET_LECTURES;
+            add_option_lecture(){
+                this.added_lectures=this.$store.getters.GET_OPTION_LECTURES;
             },
-            sub_pin_lecture(lecture){
-                this.$store.dispatch('SUB_PIN_LECTURE', lecture);
-                this.$bus.$emit('sub_pin_lecture',lecture);
-                this.added_lectures=this.$store.getters.GET_LECTURES;
+            sub_option_lecture(lecture){
+                this.$store.dispatch('SUB_OPTION_LECTURE', lecture);
+                this.$bus.$emit('sub_option_lecture',lecture);
+                this.added_lectures=this.$store.getters.GET_OPTION_LECTURES;
             }
         }
     }
@@ -41,7 +40,7 @@
         padding: 0;
     }
 
-    #pin_added_lecture_list{
+    #option_added_lecture_list{
         height: 100%;
         display: inline-block;
         overflow-y: scroll;

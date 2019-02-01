@@ -1,5 +1,5 @@
 <template>
-    <div id="pin_lecture_layout_wrap">
+    <div id="option_lecture_layout_wrap">
         <div id="menu_tab">
             <div class="tab" :class="[isActive? 'active': 'un_active']" @click="isActive = true">
                 <div class="icon_wrap">
@@ -14,29 +14,29 @@
             <div id="blank_tab"></div>
         </div>
         <div id="contents_wrap">
-            <pin-search-lecture v-show="isActive"></pin-search-lecture>
+            <option-search-lecture v-show="isActive"></option-search-lecture>
             <div v-show="!isActive" id="category_wrap">
-                <pin-category-list v-if="layer === 0"></pin-category-list>
-                <pin-sub-category-list v-if="layer === 1" :category = category></pin-sub-category-list>
-                <pin-category-lecture-list v-if="layer === 2" :category = category :sub_category = sub_category></pin-category-lecture-list>
+                <option-category-list v-if="layer === 0"></option-category-list>
+                <option-sub-category-list v-if="layer === 1" :category = category></option-sub-category-list>
+                <option-category-lecture-list v-if="layer === 2" :category = category :sub_category = sub_category></option-category-lecture-list>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    import PinSearchLecture from './PinSearchLecture'
-    import PinCategoryList from './PinCategoryList'
-    import PinSubCategoryList from "./PinSubCategoryList"
-    import PinCategoryLectureList from './PinCategoryLectureList'
+    import optionSearchLecture from './OptionSearchLecture'
+    import optionCategoryList from './OptionCategoryList'
+    import optionSubCategoryList from "./OptionSubCategoryList"
+    import optionCategoryLectureList from './OptionCategoryLectureList'
 
     export default {
-        name: "PinLectureLayout",
+        name: "OptionLectureLayout",
         components:{
-            'pin-search-lecture': PinSearchLecture,
-            'pin-category-list': PinCategoryList,
-            'pin-sub-category-list': PinSubCategoryList,
-            'pin-category-lecture-list': PinCategoryLectureList,
+            'option-search-lecture': optionSearchLecture,
+            'option-category-list': optionCategoryList,
+            'option-sub-category-list': optionSubCategoryList,
+            'option-category-lecture-list': optionCategoryLectureList,
         },
         data(){
             return{
@@ -72,7 +72,7 @@
         margin: 0;
         padding: 0;
     }
-    #pin_lecture_layout_wrap{
+    #option_lecture_layout_wrap{
         display:inline-block;
         height: 100%;
         width: 100%;

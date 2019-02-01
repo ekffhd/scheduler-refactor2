@@ -1,19 +1,9 @@
 <template>
-    <div id="pin_added_lecture_data_wrap" @mouseenter="show = true" @mouseleave="show = false">
+    <div id="option_added_lecture_data_wrap" @mouseenter="show = true" @mouseleave="show = false">
         <div id="lecture_data">
             <div id="lecture_title"> <div class="wrap" style="margin-top: 5%; height: 95%;"><div class="inner">{{lecture.title}}</div></div> </div>
             <div id="lecture_info">
-                {{lecture.professor}} &nbsp; {{lecture.classroom}} &nbsp; {{lecture.point}} 학점
-            </div>
-            <div id="lecture_time_wrap">
-                <div class="wrap">
-                    <div class="inner" style="text-align: center;">
-                        <div id="lecture_time" v-for="(time, index) in lecture.timetable" :key="index">
-                            {{time.day}} {{time.start.split(":")[0]+":"+time.start.split(":")[1]}}~{{time.end.split(":")[0]+":"+time.end.split(":")[1]}}
-                        </div>
-                    </div>
-                </div>
-
+                {{lecture.code}} {{lecture.point}}학점
             </div>
         </div>
         <div id="minus_hover_wrap" v-show="show===true">
@@ -28,7 +18,7 @@
 
 <script>
     export default {
-        name: "PinLectureData",
+        name: "OptionLectureData",
         props:['lecture'],
         data(){
             return{
@@ -43,7 +33,7 @@
         margin: 0;
         padding: 0;
     }
-    #pin_added_lecture_data_wrap{
+    #option_added_lecture_data_wrap{
         position: relative;
         width: calc(100% - 30px);
         height: 100%;

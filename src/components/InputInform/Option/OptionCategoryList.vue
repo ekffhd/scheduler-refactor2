@@ -1,5 +1,5 @@
 <template>
-    <div id="pin_category_list">
+    <div id="option_category_list">
         <div id="category_data" v-for="(category, index) in categories" :key="index" @click="category_to_sub(category)">
             <div id="category_title_wrap">
                 {{category}}
@@ -13,7 +13,7 @@
 
 <script>
     export default {
-        name: "PinCategoryList",
+        name: "OptionCategoryList",
         data(){
             return{
                 categories: ['인문','사회','IT','과학'],
@@ -32,7 +32,7 @@
         margin: 0;
         padding: 0;
     }
-    #pin_category_list{
+    #option_category_list{
     }
     #category_data{
         display: inline-block;

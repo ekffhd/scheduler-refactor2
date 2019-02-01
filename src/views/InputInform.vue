@@ -3,11 +3,10 @@
         <div id="scheduler_wrap">
             <div id="scheduler_inner">
                 <scheduler id="scheduler"></scheduler>
+                <div id="submit_button_wrap">
+                    <button id="submit_button">SUBMIT</button>
+                </div>
             </div>
-            <div id="submit_button_wrap">
-                <button id="submit_button">SUBMIT</button>
-            </div>
-
         </div>
         <div id="option_select_wrap">
             <div id="input_basic_inform_wrap">
@@ -84,43 +83,43 @@
     #input_inform_wrap{
         display: inline-block;
         width: 90%;
-        min-width: 980px;
         max-width: 1100px;
+        max-height: 950px;
         height: 100vh;
     }
     #scheduler_wrap{
-        position: relative;
-        display: inline-block;
+        /*position: relative;*/
+        display: table;
         width: 55%;
         height: 100%;
         float: left;
+        border: 1px solid;
     }
     #scheduler_inner{
-        display: inline-block;
-        height: 100%;
-        padding-top: 10%;
+        display: table-cell;
+        border: 1px solid blue;
+        vertical-align: middle;
     }
     #submit_button_wrap{
-        position: absolute;
         display: inline-block;
         height: 5%;
-        width: 70%;
-        min-width: 440px;
-        top: 85%;
-        right: 0;
+        width: 90%;
+        margin-top: 5%;
     }
     #scheduler{
         display: inline-block;
-        width: 70%;
-        height: calc(100% + 1px);
+        width: 80%;
+        height: 70%;
+        border: 1px solid red;
     }
     #option_select_wrap{
         display: inline-block;
         width: calc( 40% - 4px);
-        min-width: 430px;
         height: 100%;
         min-height: 630px;
+        border: 1px solid;
     }
+
     #input_basic_inform_wrap{
         display: inline-block;
         width: 80%;
@@ -156,7 +155,6 @@
     #lecture_layout_wrap{
         display: inline-block;
         width: 80%;
-        min-width: 345px;
         height: 45%;
     }
     .active{
@@ -185,6 +183,38 @@
         border-radius: 10px;
         cursor: pointer;
         outline: none;
+    }
+
+
+    @media ( max-width: 769px){
+        #input_inform_wrap{
+            background-color: red;
+            width: 100vw;
+        }
+        #scheduler_wrap{
+            width: 100%;
+        }
+        #option_select_wrap{
+            display: none;
+        }
+
+    }
+
+    @media (max-width: 1210px){
+        #lecture_layout_wrap{
+            width: 90%;
+        }
+        #added_lecture_list_wrap{
+            width: 90%;
+        }
+    }
+    @media (max-width: 1075px){
+        #lecture_layout_wrap{
+            width: 100%;
+        }
+        #added_lecture_list_wrap{
+            width: 100%;
+        }
     }
 
 </style>

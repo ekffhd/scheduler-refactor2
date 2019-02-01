@@ -1,5 +1,5 @@
 <template>
-    <div >
+    <div>
         <div id="scheduler_wrap">
             <div class="table_head">
                 <table>
@@ -288,10 +288,7 @@
         padding: 0;
     }
     #scheduler_wrap{
-        width: 100%;
-        min-width: 440px;
-        height: 70%;
-        min-height: 470px;
+        height: 100%;
     }
     table{
         border-spacing: 0;

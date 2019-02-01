@@ -40,6 +40,7 @@
         padding-left: 15px;
         padding-right: 15px;
         cursor: pointer;
+        color: #566270;
     }
     #lecture_data{
         display: inline-block;
@@ -58,7 +59,7 @@
         float: left;
         width: 67%;
         height: 55%;
-        font-size: 14px;
+        font-size: 12px;
         font-weight: bold;
     }
     .wrap{
@@ -78,14 +79,8 @@
         float: left;
         width: 67%;
         height: 40%;
-        font-size: 13px;
+        font-size: 11px;
         text-align: left;
-    }
-    #lecture_time_wrap{
-        display: inline-block;
-        width: 30%;
-        height: 100%;
-        font-size: 12px;
     }
     #minus_hover_wrap{
         position: absolute;

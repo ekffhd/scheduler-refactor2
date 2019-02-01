@@ -68,7 +68,7 @@
         float: left;
         width: 67%;
         height: 55%;
-        font-size: 14px;
+        font-size: 13px;
         font-weight: bold;
     }
     .wrap{
@@ -88,14 +88,14 @@
         float: left;
         width: 67%;
         height: 40%;
-        font-size: 13px;
+        font-size: 11px;
         text-align: left;
     }
     #lecture_time_wrap{
         display: inline-block;
         width: 30%;
         height: 100%;
-        font-size: 12px;
+        font-size: 11px;
     }
     #minus_hover_wrap{
         position: absolute;

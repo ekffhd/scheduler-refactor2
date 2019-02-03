@@ -1,70 +1,102 @@
 <template>
-    <div id="input_inform_wrap">
-        <div id="mobile_bar">
-            <img id="mobile_caser_icon" src="../assets/Caser2.png" width="50%">
-            <div id="plus_icon_wrap">
-                <div class="wrap" @click="open_side_bar">
-                    <div class="inner">
-                        <i id="plus_icon" class="fas fa-calendar-plus"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="scheduler_wrap" @click="close_side_bar">
-            <div id="scheduler_inner">
-                <img src="../assets/Caser.png" id="caser_icon" width="30%" style="margin-bottom: 5%; margin-left: 8%">
-                <scheduler id="scheduler"></scheduler>
-                <div id="submit_button_wrap">
-                    <button id="submit_button">SUBMIT</button>
-                </div>
-            </div>
-        </div>
-        <div id="option_select_wrap">
-            <div id="input_basic_inform_wrap">
-                <input-basic-inform></input-basic-inform>
-            </div>
-            <div id="lecture_type_button_wrap">
-                <button :class="[isActive ? 'active':'un_active']" @click="turn_to_pin">고정 강의</button>
-                <button :class="[isActive ? 'un_active':'active']" @click="turn_to_option"
-                        style="margin-left: 5px;">선택 강의</button>
-                <div class="option_description" v-if="isActive">
-                    OOO교수님의 △△수업은 꼭들어야해!<br>
-                    반드시 들어야하는 특정 강의를 선택해주세요.
-                </div>
-                <div class="option_description" v-else>
-                    △△ 수업을 듣고싶은데, 시간과 교수님은 상관없어!<br>
-                    가능한 경우의 수를 알고싶은 강의를 선택해주세요.
-                </div>
-            </div>
-            <div id="lecture_layout_wrap">
-                <pin-lecture-layout v-show="pin === true"></pin-lecture-layout>
-                <option-lecture-layout v-show="pin === false"></option-lecture-layout>
-            </div>
-            <div id="added_lecture_list_wrap">
-                <pin-added-lecture-list v-show="pin === true"></pin-added-lecture-list>
-                <option-added-lecture-list v-show="pin === false"></option-added-lecture-list>
-            </div>
-        </div>
-            <div id="mobile_option_select_wrap">
-                <div style="display: inline-block; position: relative; width: 100%; height: 100%;">
-                    <div id="mobile_break_time_title" style="background-color : #353866; color: white" @click="toggle_break_time_tab">
-                        <div class="wrap">
+    <div class="wrap" >
+        <div class="inner" >
+            <div id="input_inform_wrap">
+                <div id="mobile_bar">
+                    <img id="mobile_caser_icon" src="../assets/Caser2.png" width="50%">
+                    <div id="plus_icon_wrap">
+                        <div class="wrap" @click="open_side_bar">
                             <div class="inner">
-                                공강선택
+                                <i id="plus_icon" class="fas fa-calendar-plus"></i>
                             </div>
                         </div>
                     </div>
-                    <div id="mobile_input_basic_inform_wrap">
-                        <mobile-input-basic-inform  id="mobile_input_basic_inform" :class="[active_tab ==='break' ? 'active_tab': 'un_active_tab'] "></mobile-input-basic-inform>
-                    </div>
-                    <div id="mobile_lecture_layout_title" style="background-color : #353866; color: white" @click="toggle_add_lecture_tab">
-                        <div class="wrap">
-                            <div class="inner">
-                                시간표 담기
-                            </div>
+                </div>
+                <div id="scheduler_wrap" @click="close_side_bar">
+                    <div id="scheduler_inner">
+                        <img src="../assets/Caser.png" id="caser_icon" width="30%" style="margin-bottom: 5%; margin-left: 8%">
+                        <scheduler id="scheduler"></scheduler>
+                        <div id="submit_button_wrap">
+                            <button id="submit_button">SUBMIT</button>
                         </div>
                     </div>
-                    <div id="mobile_lecture_layout_wrap">
+                </div>
+                <div id="option_select_wrap">
+                    <div id="input_basic_inform_wrap">
+                        <input-basic-inform></input-basic-inform>
+                    </div>
+                    <div id="lecture_type_button_wrap">
+                        <button :class="[isActive ? 'active':'un_active']" @click="turn_to_pin">고정 강의</button>
+                        <button :class="[isActive ? 'un_active':'active']" @click="turn_to_option"
+                                style="margin-left: 5px;">선택 강의</button>
+                        <div class="option_description" v-if="isActive">
+                            OOO교수님의 △△수업은 꼭들어야해!<br>
+                            반드시 들어야하는 특정 강의를 선택해주세요.
+                        </div>
+                        <div class="option_description" v-else>
+                            △△ 수업을 듣고싶은데, 시간과 교수님은 상관없어!<br>
+                            가능한 경우의 수를 알고싶은 강의를 선택해주세요.
+                        </div>
+                    </div>
+                    <div id="lecture_layout_wrap">
+                        <pin-lecture-layout v-show="pin === true"></pin-lecture-layout>
+                        <option-lecture-layout v-show="pin === false"></option-lecture-layout>
+                    </div>
+                    <div id="added_lecture_list_wrap">
+                        <pin-added-lecture-list v-show="pin === true"></pin-added-lecture-list>
+                        <option-added-lecture-list v-show="pin === false"></option-added-lecture-list>
+                    </div>
+                </div>
+                <div id="mobile_option_select_wrap">
+                    <div style="display: inline-block; position: relative; width: 100%; height: 100%;">
+                        <div id="mobile_break_time_title" style="background-color : #353866; color: white" @click="toggle_break_time_tab">
+                            <div class="wrap">
+                                <div class="inner">
+                                    공강선택
+                                </div>
+                            </div>
+                        </div>
+                        <div id="mobile_input_basic_inform_wrap">
+                            <mobile-input-basic-inform  id="mobile_input_basic_inform" :class="[active_tab ==='break' ? 'active_tab': 'un_active_tab'] "></mobile-input-basic-inform>
+                        </div>
+                        <div id="mobile_lecture_layout_title" style="background-color : #353866; color: white" @click="toggle_add_lecture_tab">
+                            <div class="wrap">
+                                <div class="inner">
+                                    시간표 담기
+                                </div>
+                            </div>
+                        </div>
+                        <div id="mobile_lecture_layout_wrap">
+                            <div id="mobile_lecture_type_button_wrap">
+                                <button :class="[isActive ? 'active':'un_active']" @click="turn_to_pin">고정 강의</button>
+                                <button :class="[isActive ? 'un_active':'active']" @click="turn_to_option"
+                                        style="margin-left: 5px;">선택 강의</button>
+                                <div class="mobile_option_description" v-if="isActive">
+                                    OOO교수님의 △△수업은 꼭들어야해!<br>
+                                    반드시 들어야하는 특정 강의를 선택해주세요.
+                                </div>
+                                <div class="mobile_option_description" v-else>
+                                    △△ 수업을 듣고싶은데, 시간과 교수님은 상관없어!<br>
+                                    가능한 경우의 수를 알고싶은 강의를 선택해주세요.
+                                </div>
+                            </div>
+                            <div id="mobile_lecture_wrap">
+                                <mobile-pin-search-lecture v-show="pin === true"></mobile-pin-search-lecture>
+                                <mobile-option-search-lecture v-show="pin === false"></mobile-option-search-lecture>
+                            </div>
+                        </div>
+                        <div id="mobile_added_lecture_title" style="background-color : #353866; color: white"  @click="toggle_added_lecture_list_tab">
+                            <div class="wrap">
+                                <div class="inner">
+                                    추가된 강의 목록
+
+                                </div>
+                            </div>
+                        </div>
+                        <div id="mobile_added_lecture_list_wrap" >
+
+                        </div>
+                        <!--
                         <div id="mobile_lecture_type_button_wrap">
                             <button :class="[isActive ? 'active':'un_active']" @click="turn_to_pin">고정 강의</button>
                             <button :class="[isActive ? 'un_active':'active']" @click="turn_to_option"
@@ -78,42 +110,15 @@
                                 가능한 경우의 수를 알고싶은 강의를 선택해주세요.
                             </div>
                         </div>
-                        <div id="mobile_lecture_wrap">
-                            <mobile-pin-search-lecture v-show="pin === true"></mobile-pin-search-lecture>
-                            <mobile-option-search-lecture v-show="pin === false"></mobile-option-search-lecture>
+                        <div id="mobile_lecture_layout_wrap">
+                            <mobile-option-search-lecture></mobile-option-search-lecture>
                         </div>
+                        -->
                     </div>
-                    <div id="mobile_added_lecture_title" style="background-color : #353866; color: white"  @click="toggle_added_lecture_list_tab">
-                        <div class="wrap">
-                            <div class="inner">
-                                추가된 강의 목록
-
-                            </div>
-                        </div>
-                    </div>
-                    <div id="mobile_added_lecture_list_wrap" >
-
-                    </div>
-                    <!--
-                    <div id="mobile_lecture_type_button_wrap">
-                        <button :class="[isActive ? 'active':'un_active']" @click="turn_to_pin">고정 강의</button>
-                        <button :class="[isActive ? 'un_active':'active']" @click="turn_to_option"
-                                style="margin-left: 5px;">선택 강의</button>
-                        <div class="mobile_option_description" v-if="isActive">
-                            OOO교수님의 △△수업은 꼭들어야해!<br>
-                            반드시 들어야하는 특정 강의를 선택해주세요.
-                        </div>
-                        <div class="mobile_option_description" v-else>
-                            △△ 수업을 듣고싶은데, 시간과 교수님은 상관없어!<br>
-                            가능한 경우의 수를 알고싶은 강의를 선택해주세요.
-                        </div>
-                    </div>
-                    <div id="mobile_lecture_layout_wrap">
-                        <mobile-option-search-lecture></mobile-option-search-lecture>
-                    </div>
-                    -->
                 </div>
             </div>
+
+        </div>
     </div>
 </template>
 
@@ -271,12 +276,24 @@
         margin: 0;
         padding: 0;
     }
+    .wrap{
+        display: table;
+        width: 100%;
+        height: 100%;
+    }
+    .inner{
+        display: table-cell;
+        width: 100%;
+        height: 100%;
+        vertical-align: middle;
+    }
     #input_inform_wrap{
         display: inline-block;
         width: 90%;
         max-width: 1100px;
-        max-height: 950px;
-        height: 100vh;
+        max-height: 770px;
+        min-height: 650px;
+        height: 100%;
     }
     #mobile_bar{
         display: none;

@@ -105,6 +105,11 @@
         overflow-y: scroll;
     }
 
+    #pin_search_lecture_list::-webkit-scrollbar {
+        display: none;
+    }
+
+
     #lecture_data{
         display: inline-block;
         border: 2px solid #aaabd3;

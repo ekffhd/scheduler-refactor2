@@ -166,12 +166,16 @@
         font-weight: bold;
     }
     #set_break_wrap{
+        -ms-overflow-style: none;
         display: inline-block;
         position: absolute;
         left: 30%;
         height: 100%;
         width: 70%;
         overflow-y: scroll;
+    }
+    #set_break_wrap::-webkit-scrollbar {
+        display: none;
     }
     .break_time_select{
         display: inline-block;

@@ -30,17 +30,19 @@
         width: 100vw;
     }
     #scheduler_data_wrap{
+        overflow-x: scroll;
+        -ms-overflow-x: scroll;
         display: inline-block;
-        height: 100vh;
-        width: auto;
+        width: 1080vh;
+        height: 98vh;
     }
     #scheduler_data{
         display: inline-block;
         width: auto;
-        margin-top: 20vh;
+        margin: 0 auto;
         height: 80vh;
         float: left;
-        margin-left: 2vw;
     }
+
 
 </style>

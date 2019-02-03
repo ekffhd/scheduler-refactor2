@@ -289,6 +289,7 @@
         float: left;
     }
     #scheduler_inner{
+        padding-right: 6%;
         display: table-cell;
         vertical-align: middle;
     }

@@ -27,7 +27,7 @@
                             <td>
                                 <div class="cols" v-for="(lecture, index) in mon" :key="index">
                                     <div v-for="(timetable, index) in lecture.timetable" :key="index">
-                                        <div v-if="timetable.day === '월' " class="lecture_wrap"  v-bind:style="{top: 'calc('+calculate_top_margin(timetable, '월')+'% + 1px)', height: 'calc('+calculate_lecture_height(timetable.start, timetable.end) + '% - 1px)'}">
+                                        <div v-if="timetable.day === '월' " class="lecture_wrap"  v-bind:style="{top: 'calc('+calculate_top_margin(timetable, '월')+'% + 1px)', height: 'calc('+calculate_lecture_height(timetable.start, timetable.end) + '% - 1.5px)'}">
                                             <div class="lecture_inner">
                                                 <div class="lecture_title">
                                                     {{lecture.title}}
@@ -58,7 +58,7 @@
                                 <div class="cols" v-for="(lecture, index) in tue" :key="index">
                                     <div v-for="(timetable, index) in lecture.timetable" :key="index">
                                         <div class="lecture_inner">
-                                            <div v-if="timetable.day === '화' " class="lecture_wrap"  v-bind:style="{top: 'calc('+calculate_top_margin(timetable, '화')+'% + 1px)', height: 'calc('+calculate_lecture_height(timetable.start, timetable.end) + '% - 1px)'}">
+                                            <div v-if="timetable.day === '화' " class="lecture_wrap"  v-bind:style="{top: 'calc('+calculate_top_margin(timetable, '화')+'% + 1px)', height: 'calc('+calculate_lecture_height(timetable.start, timetable.end) + '% - 1.5px)'}">
                                                 <div class="lecture_inner">
                                                     <div class="lecture_title">
                                                         {{lecture.title}}
@@ -89,7 +89,7 @@
                             <td>
                                 <div class="cols" v-for="(lecture, index) in wed" :key="index">
                                     <div v-for="(timetable, index) in lecture.timetable" :key="index">
-                                        <div v-if="timetable.day === '수'" class="lecture_wrap"  v-bind:style="{top: 'calc('+calculate_top_margin(timetable, '수')+'% + 1px)', height: 'calc('+calculate_lecture_height(timetable.start, timetable.end) + '% - 1px)'}">
+                                        <div v-if="timetable.day === '수'" class="lecture_wrap"  v-bind:style="{top: 'calc('+calculate_top_margin(timetable, '수')+'% + 1px)', height: 'calc('+calculate_lecture_height(timetable.start, timetable.end) + '% - 1.5px)'}">
                                             <div class="lecture_inner">
                                                 <div class="lecture_title">
                                                     {{lecture.title}}
@@ -119,7 +119,7 @@
                             <td>
                                 <div class="cols" v-for="(lecture, index) in thu" :key="index">
                                     <div v-for="(timetable, index) in lecture.timetable" :key="index">
-                                        <div v-if="timetable.day === '목' " class="lecture_wrap"  v-bind:style="{top: 'calc('+calculate_top_margin(timetable, '목')+'% + 1px)', height: 'calc('+calculate_lecture_height(timetable.start, timetable.end) + '% - 1px)'}">
+                                        <div v-if="timetable.day === '목' " class="lecture_wrap"  v-bind:style="{top: 'calc('+calculate_top_margin(timetable, '목')+'% + 1px)', height: 'calc('+calculate_lecture_height(timetable.start, timetable.end) + '% - 1.5px)'}">
                                             <div class="lecture_inner">
                                                 <div class="lecture_title">
                                                     {{lecture.title}}
@@ -150,7 +150,7 @@
                             <td>
                                 <div class="cols" v-for="(lecture, index) in fri" :key="index">
                                     <div v-for="(timetable, index) in lecture.timetable" :key="index">
-                                        <div v-if="timetable.day === '금'" class="lecture_wrap"  v-bind:style="{top: 'calc('+calculate_top_margin(timetable, '금')+'% + 1px)', height: 'calc('+calculate_lecture_height(timetable.start, timetable.end) + '% - 1px)'}">
+                                        <div v-if="timetable.day === '금'" class="lecture_wrap"  v-bind:style="{top: 'calc('+calculate_top_margin(timetable, '금')+'% + 1px)', height: 'calc('+calculate_lecture_height(timetable.start, timetable.end) + '% - 1.5px)'}">
                                             <div class="lecture_inner">
                                                 <div class="lecture_title">
                                                     {{lecture.title}}
@@ -306,6 +306,7 @@
         display: inline-block;
         height: 100%;
         width: 100%;
+        overflow:hidden;
     }
     .day{
         color:#353866;
@@ -318,8 +319,8 @@
         display: inline-block;
         overflow: hidden;
         /*top: calc(100% / 12);*/
-        left: 1px;
-        width: calc( 100% - 1px);
+        left: 1.5px;
+        width: calc( 100% - 1.5px);
         font-size: 10px;
         background-color: rgba(217,219,235,1);
         text-align: left;

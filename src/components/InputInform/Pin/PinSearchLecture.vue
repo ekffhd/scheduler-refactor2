@@ -96,7 +96,7 @@
         background-color: white;
         color: #566270;
         height: calc(100% - 1px);
-        width: 100%;
+        width: calc(100% - 1px);
     }
     #pin_search_input_form_wrap{
         display: inline-block;

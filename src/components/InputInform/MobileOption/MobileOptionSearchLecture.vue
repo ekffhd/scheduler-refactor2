@@ -15,11 +15,10 @@
         </div>
         <div id="option_search_lecture_list">
             <div id="lecture_data" v-for="(lecture, index) in search_data" @click="add_option_lecture(lecture)" :key="index">
-                <div id="lecture_title"> <div class="wrap" style="margin-top: 5%; height: 95%;"><div class="inner">{{lecture.title}}</div></div> </div>
+                <div id="lecture_title"> <div class="wrap"><div class="inner"><div style="display: inline-block;">{{lecture.title}}</div></div></div> </div>
                 <div id="lecture_info">
                         {{lecture.code}} {{lecture.point}}학점
                 </div>
-
             </div>
         </div>
     </div>
@@ -133,10 +132,10 @@
     }
     #option_search_lecture_wrap{
         display: inline-block;
-        margin-top: 1px;
-        background-color: white;
         color: #566270;
-        height: calc(100% - 1px);
+        height: 100%;
+        width: 100%;
+        border-bottom: 1px solid #aaabd3;
     }
     #option_search_input_form_wrap{
         display: inline-block;
@@ -144,13 +143,10 @@
         background-color: white;
         border-radius: 5px;
         box-shadow: 1px 1px 5px;
-        margin: auto;
-        margin-top: 10px;
-        margin-bottom: 10px;
+        margin: 10px auto;
         height: 30px;
         width: 90%;
     }
-
     #search_input{
         display: inline-block;
         background-color: white;
@@ -163,48 +159,37 @@
         color: #aaabd3;
     }
     #option_search_lecture_list{
+        display: inline-block;
         height: calc(100% - 50px);
+        width: 100%;
         overflow-y: scroll;
+        overflow-x: hidden;
     }
-
     #lecture_data{
         display: inline-block;
-        border: 2px solid #aaabd3;
-        border-radius: 10px;
-        width: 80%;
-        height: 28%;
-        padding-left: 15px;
-        padding-right: 15px;
+        border-bottom: 1px solid #aaabd3;
+        width: 100%;
+        height: 20%;
         cursor: pointer;
+        padding: 10px 15px;
     }
     #lecture_data:hover{
-        border: 2px solid #353866;
         color: #353866;
         background-color:rgba(170, 173, 211,0.3);
     }
     #lecture_title{
         display: inline-block;
-        float: left;
-        width: 67%;
-        height: 55%;
-        font-size: 13px;
-        font-weight: bold;
-    }
-    .wrap{
-        display: table;
-        height: 100%;
         width: 100%;
-    }
-    .inner{
-        display: table-cell;
-        vertical-align: middle;
+        height: 45%;
+        font-size: 12px;
+        font-weight: bold;
         text-align: left;
     }
+
     #lecture_info{
         display: inline-block;
-        float: left;
-        width: 67%;
-        height: 40%;
+        width: 100%;
+        height: 55%;
         font-size: 11px;
         text-align: left;
     }

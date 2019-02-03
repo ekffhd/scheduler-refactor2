@@ -17,7 +17,7 @@
                 <table>
                     <tbody>
                         <tr>
-                            <th>
+                            <th style="width: 10%;">
                                 <div class="hours">
                                     <div v-for="hour in hours" :key="hour" style="text-align: right;">
                                         {{hour}}
@@ -289,6 +289,7 @@
     }
     #scheduler_wrap{
         height: 100%;
+        width: auto;
     }
     table{
         border-spacing: 0;
@@ -306,8 +307,10 @@
     }
     .day{
         color:#353866;
+
         font-weight: bold;
     }
+
     .lecture_wrap{
         position: absolute;
         display: inline-block;
@@ -348,6 +351,7 @@
     .table_body{
         width: 100%;
         height: calc(95% + 1px);
+
     }
     .table_body>table{
         display: inline-block;
@@ -374,16 +378,18 @@
     }
     .table_body>table>tbody>tr>th>.hours{
         display: inline-block;
-        width: 100%;
+        width: 50%;
+        float: right;
         height: 100%;
+        text-align: right;
     }
 
     .table_body>table>tbody>tr>th>.hours>div{
         display: block;
-        width: calc( 100% - 10px);
+        width: calc( 100% - 5px);
         height: calc( ( (100% - 1px) / 12 ));
         font-size: 13px;
-        text-align: center;
+        text-align: right;
 
     }
     .table_body>table>tbody>tr>td{

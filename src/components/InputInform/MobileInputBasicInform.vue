@@ -17,7 +17,7 @@
             <p id="set_break">공강 선택 </p>
             <i class="fas fa-plus-circle" @click="add_break_time()"></i>
             <div id="set_break_wrap">
-                <div v-for="(break_time, index) in break_time_data" :key="index" class="time_select">
+                <div v-for="(break_time, index) in break_time_data" :key="index" class="break_time_select">
                     <select v-model="break_time.day" class="day_select">
                         <option value="mon">월</option>
                         <option value="tue">화</option>
@@ -29,8 +29,10 @@
                     <select v-model="break_time.start_time" class="time_select">
                         <option v-for="(start,index) in time_list" :key="index" >{{start}}</option>
                     </select>
-                    ~
-                    <select v-model="break_time.end_time" class="end_time_select">
+                    <div style="display: inline-block; width: 5%; float: left;">
+                        ~
+                    </div>
+                    <select v-model="break_time.end_time" class="time_select">
                         <option v-for="(end,index) in time_list" :key="index" >{{end}}</option>
                     </select>
                     <div class="minus_icon">
@@ -45,7 +47,7 @@
 
 <script>
     export default {
-        name: "InputInform",
+        name: "MobileInputBasicInform",
         data(){
             return{
                 departments: [],
@@ -149,145 +151,65 @@
         width: 10%;
         float: left;
         height: 100%;
-        font-size: 17px;
+        font-size: 15px;
     }
     #set_break{
         display: inline-block;
-        width: 20%;
+        width: 25%;
+        margin-bottom: 5%;
         font-weight: bold;
+        font-size: 12px;
         float: left;
     }
     #set_break_wrap{
         display: inline-block;
-        width: 70%;
+        width: 80%;
+        margin-left: 10%;
         height: 70px;
         overflow-y: scroll;
-        float: right;
+        float: left;
+        padding-left: 3%;
+    }
+    select{
+        background-color: white;
+        border: 1px solid #aaabd3;
+        outline:none;
+        -webkit-appearance: none; /* 화살표 없애기 for chrome*/
+        -moz-appearance: none;
+        text-align: center;
+        font-size: 10px;
+        height: 17px;
+        padding-left: 5px;
+    }
+    select:focus{
+        border: 2px solid #353866;
+               /* 화살표 없애기 공통*/
+    }
+    select::-ms-expand {
+        display: none;            /* 화살표 없애기 for IE10, 11*/
     }
     .break_time_select{
         display: inline-block;
+        height: 25%;
         width: 100%;
     }
     .day_select{
         display: inline-block;
-        width: 20%;
+        width: 13%;
+        margin-right: 5%;
         outline: none;
+        float: left;
+    }
+    .time_select{
+        display: inline-block;
+        float: left;
     }
     .minus_icon{
         display: inline-block;
-        float: right;
+        float: left;
+        width: 10%;
         margin-right: 5px;
-        font-size: 17px;
+        font-size: 15px;
     }
 
-    @media (max-width: 769px){
-
-        #input_basic_inform{
-            margin-top: 10%;
-            height: 100%;
-            font-size: 13px;
-            color: #353866;
-        }
-        #point_wrap{
-            display: inline;
-            width: 100%;
-        }
-        #set_point{
-            display: inline-block;
-            width: 20%;
-            font-weight: bold;
-            float: left;
-        }
-        #set_point_input{
-            display: inline-block;
-            outline: none;
-            width: 10%;
-            height: 15px;
-            text-align: center;
-            border-radius: 5px;
-            border: 1px solid #353866;
-            text-shadow: none;
-            float: left;
-            margin-bottom: 5px;
-        }
-        #left_point{
-            display: inline-block;
-            width: 40%;
-            float: right;
-            font-weight: bold;
-        }
-        #set_point_input:focus{
-            box-shadow: 1px 1px 5px;
-        }
-
-        #break_wrap{
-            display: inline-block;
-            width: 100%;
-        }
-        #break_wrap > i{
-            display: inline-block;
-            width: 10%;
-            float: left;
-            height: 100%;
-            font-size: 15px;
-        }
-        #set_break{
-            display: inline-block;
-            width: 25%;
-            margin-bottom: 5%;
-            font-weight: bold;
-            font-size: 12px;
-            float: left;
-        }
-        #set_break_wrap{
-            display: inline-block;
-            width: 80%;
-            margin-left: 10%;
-            height: 70px;
-            overflow-y: scroll;
-            float: left;
-            padding-left: 3%;
-        }
-        select{
-            background-color: white;
-            border: 1px solid #aaabd3;
-            outline:none;
-            -webkit-appearance: none; /* 화살표 없애기 for chrome*/
-            -moz-appearance: none;
-            text-align: center;
-            font-size: 10px;
-            height: 17px;
-            padding-left: 5px;
-        }
-        select:focus{
-            border: 2px solid #353866;
-            /* 화살표 없애기 공통*/
-        }
-        select::-ms-expand {
-            display: none;            /* 화살표 없애기 for IE10, 11*/
-        }
-        .break_time_select{
-            display: inline-block;
-            height: 25%;
-            width: 100%;
-        }
-        .day_select{
-            display: inline-block;
-            width: 13%;
-            margin-right: 5%;
-            outline: none;
-            float: left;
-        }
-        .time_select{
-            display: inline-block;
-            float: left;
-        }
-        .minus_icon{
-            display: inline-block;
-            float: left;
-            width: 10%;
-            margin-right: 5px;
-            font-size: 15px;
-        }
-    }
 </style>

@@ -27,7 +27,7 @@
                             <td>
                                 <div class="cols" v-for="(lecture, index) in mon" :key="index">
                                     <div v-for="(timetable, index) in lecture.timetable" :key="index">
-                                        <div v-if="timetable.day === '월' " class="lecture_wrap"  v-bind:style="{top: 'calc('+calculate_top_margin(timetable, '월')+'% + 1px)', height: 'calc('+calculate_lecture_height(lecture.timetable[0].start, lecture.timetable[0].end) + '% - 1px)'}">
+                                        <div v-if="timetable.day === '월' " class="lecture_wrap"  v-bind:style="{top: 'calc('+calculate_top_margin(timetable, '월')+'% + 1px)', height: 'calc('+calculate_lecture_height(timetable.start, timetable.end) + '% - 1px)'}">
                                             <div class="lecture_inner">
                                                 <div class="lecture_title">
                                                     {{lecture.title}}
@@ -58,7 +58,7 @@
                                 <div class="cols" v-for="(lecture, index) in tue" :key="index">
                                     <div v-for="(timetable, index) in lecture.timetable" :key="index">
                                         <div class="lecture_inner">
-                                            <div v-if="timetable.day === '화' " class="lecture_wrap"  v-bind:style="{top: 'calc('+calculate_top_margin(timetable, '화')+'% + 1px)', height: 'calc('+calculate_lecture_height(lecture.timetable[0].start, lecture.timetable[0].end) + '% - 1px)'}">
+                                            <div v-if="timetable.day === '화' " class="lecture_wrap"  v-bind:style="{top: 'calc('+calculate_top_margin(timetable, '화')+'% + 1px)', height: 'calc('+calculate_lecture_height(timetable.start, timetable.end) + '% - 1px)'}">
                                                 <div class="lecture_inner">
                                                     <div class="lecture_title">
                                                         {{lecture.title}}
@@ -89,7 +89,7 @@
                             <td>
                                 <div class="cols" v-for="(lecture, index) in wed" :key="index">
                                     <div v-for="(timetable, index) in lecture.timetable" :key="index">
-                                        <div v-if="timetable.day === '수'" class="lecture_wrap"  v-bind:style="{top: 'calc('+calculate_top_margin(timetable, '수')+'% + 1px)', height: 'calc('+calculate_lecture_height(lecture.timetable[0].start, lecture.timetable[0].end) + '% - 1px)'}">
+                                        <div v-if="timetable.day === '수'" class="lecture_wrap"  v-bind:style="{top: 'calc('+calculate_top_margin(timetable, '수')+'% + 1px)', height: 'calc('+calculate_lecture_height(timetable.start, timetable.end) + '% - 1px)'}">
                                             <div class="lecture_inner">
                                                 <div class="lecture_title">
                                                     {{lecture.title}}
@@ -117,9 +117,9 @@
                                 </div>
                             </td>
                             <td>
-                                <div class="cols" v-for="(lecture, index) in tue" :key="index">
+                                <div class="cols" v-for="(lecture, index) in thu" :key="index">
                                     <div v-for="(timetable, index) in lecture.timetable" :key="index">
-                                        <div v-if="timetable.day === '목' " class="lecture_wrap"  v-bind:style="{top: 'calc('+calculate_top_margin(timetable, '목')+'% + 1px)', height: 'calc('+calculate_lecture_height(lecture.timetable[0].start, lecture.timetable[0].end) + '% - 1px)'}">
+                                        <div v-if="timetable.day === '목' " class="lecture_wrap"  v-bind:style="{top: 'calc('+calculate_top_margin(timetable, '목')+'% + 1px)', height: 'calc('+calculate_lecture_height(timetable.start, timetable.end) + '% - 1px)'}">
                                             <div class="lecture_inner">
                                                 <div class="lecture_title">
                                                     {{lecture.title}}
@@ -150,7 +150,7 @@
                             <td>
                                 <div class="cols" v-for="(lecture, index) in fri" :key="index">
                                     <div v-for="(timetable, index) in lecture.timetable" :key="index">
-                                        <div v-if="timetable.day === '금'" class="lecture_wrap"  v-bind:style="{top: 'calc('+calculate_top_margin(timetable, '금')+'% + 1px)', height: 'calc('+calculate_lecture_height(lecture.timetable[0].start, lecture.timetable[0].end) + '% - 1px)'}">
+                                        <div v-if="timetable.day === '금'" class="lecture_wrap"  v-bind:style="{top: 'calc('+calculate_top_margin(timetable, '금')+'% + 1px)', height: 'calc('+calculate_lecture_height(timetable.start, timetable.end) + '% - 1px)'}">
                                             <div class="lecture_inner">
                                                 <div class="lecture_title">
                                                     {{lecture.title}}
@@ -235,17 +235,19 @@
                 return margin;
             },//calculate_top_margin
             calculate_lecture_height(start_time, end_time){
+                console.log(start_time, end_time)
                 let end = parseFloat(end_time[0]+end_time[1]) - 9;
                 if(end_time[3] !== '0'){
-                    end += 0.5;
+                    end += 0.5;//6
                 }
                 let start = parseFloat(start_time[0]+start_time[1]) - 9;
                 if(start_time[3] !== '0'){
-                    start += 0.5;
+                    start += 0.5;//4.5
                 }
+                console.log(end, start, end-start);
 
                 let lecture_height = (end - start);
-                return lecture_height* (100/12);
+                return lecture_height* (100/12.0);
             },//calculate_lecture_height
             sub_pin_lecture(lecture){
                 let sub_index = this.mon.indexOf(lecture);

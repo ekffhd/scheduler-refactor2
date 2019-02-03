@@ -2,7 +2,7 @@
     <div id="pin_search_lecture_wrap">
         <div id="pin_search_input_form_wrap">
             <form v-on:submit.prevent="search_pin_lecture()">
-                <input id="search_input" v-model="search_param" placeholder="과목명/교수님성함" type="text" class="search_input"/>
+                <input id="search_input" v-model="search_param" placeholder="과목명/교수님성함/학과" type="text" class="search_input"/>
                 <i id="search_icon" class="fas fa-search"></i>
                 <!--
                 <transition  name="fade" id="fade">
@@ -15,20 +15,20 @@
         </div>
         <div id="pin_search_lecture_list">
             <div id="lecture_data" v-for="(lecture, index) in search_data" @click="add_pin_lecture(lecture)" :key="index">
-                <div id="lecture_title"> <div class="wrap" style="margin-top: 5%; height: 95%;"><div class="inner">{{lecture.title}}</div></div> </div>
-                <div id="lecture_info">
+                    <div id="lecture_title"> <div class="wrap" style="margin-top: 5%; height: 95%;"><div class="inner">{{lecture.title}}</div></div> </div>
+                    <div id="lecture_info">
                         {{lecture.professor}} &nbsp; {{lecture.classroom}} &nbsp; {{lecture.point}} 학점
-                </div>
-                <div id="lecture_time_wrap">
-                    <div class="wrap">
-                        <div class="inner" style="text-align: center;">
-                            <div id="lecture_time" v-for="(time, index) in lecture.timetable" :key="index">
-                                {{time.day}} {{time.start.split(":")[0]+":"+time.start.split(":")[1]}}~{{time.end.split(":")[0]+":"+time.end.split(":")[1]}}
+                    </div>
+                    <div id="lecture_time_wrap">
+                        <div class="wrap">
+                            <div class="inner" style="text-align: center;">
+                                <div id="lecture_time" v-for="(time, index) in lecture.timetable" :key="index">
+                                    {{time.day}} {{time.start.split(":")[0]+":"+time.start.split(":")[1]}}~{{time.end.split(":")[0]+":"+time.end.split(":")[1]}}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
 </template>
@@ -40,17 +40,19 @@
         data(){
             return{
                 search_data:[],
-                search_param: ''
+                search_param: '',
+                page: 1,
+                notfound: false
             }
         },//data
         methods:{
             search_pin_lecture(){
-                const search_param = this.search_param;
-                this.search_param = '';
-                axios.get('lectures/search/?search='+search_param)
+                this.page = 1;
+                this.search_data = [];
+                this.notfound = false;
+                axios.get('lectures/search/?search='+this.search_param+'&page='+this.page)
                     .then((response) => {
-                        console.log(response);
-                        this.search_data = response.data.results;
+                        this.search_data = this.search_data.concat(response.data.results);
                     });
             },
             add_pin_lecture(lecture){
@@ -59,6 +61,26 @@
                     this.$bus.$emit('add_pin_lecture',lecture);
                 }
             }
+        },
+        mounted(){
+            const load_data = () =>{
+                if (this.notfound === false){
+                    this.page++;
+                    axios.get('lectures/search/?search='+this.search_param+'&page='+this.page)
+                        .then((response) => {
+                            this.search_data = this.search_data.concat(response.data.results);
+                        })
+                        .catch(() => {
+                            this.notfound = true;
+                        });
+                }
+            };
+            const list = document.querySelector('#pin_search_lecture_list');
+            list.addEventListener('scroll', function() {
+                if (list.scrollTop + list.clientHeight >= list.scrollHeight) {
+                    load_data();
+                }
+            });
         }
     }
 </script>
@@ -104,7 +126,6 @@
         -ms-overflow-style: none;
         height: calc(100% - 50px);
         overflow-y: scroll;
-        z-index: 1000;
     }
 
     #pin_search_lecture_list::-webkit-scrollbar {

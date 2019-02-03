@@ -2,7 +2,7 @@
     <div id="option_search_lecture_wrap">
         <div id="option_search_input_form_wrap">
             <form v-on:submit.prevent="search_option_lecture()">
-                <input id="search_input" placeholder="과목명/교수님성함" v-model="search_param" type="text" class="search_input"/>
+                <input id="search_input" placeholder="과목명/교수님성함/학과" v-model="search_param" type="text" class="search_input"/>
                 <i id="search_icon" class="fas fa-search"></i>
                 <!--
                 <transition  name="fade" id="fade">
@@ -32,16 +32,19 @@
         data(){
             return{
                 search_data: [],
-                search_param: ''
+                search_param: '',
+                page: 1,
+                notfound: false
             }
         },//data
         methods:{
             search_option_lecture(){
-                const search_param = this.search_param;
-                this.search_param = '';
-                axios.get('lectures/unique/?search='+search_param)
+                this.page = 1;
+                this.search_data = [];
+                this.notfound = false;
+                axios.get('lectures/unique/?search='+this.search_param+'&page='+this.page)
                     .then((response) => {
-                        this.search_data = response.data.results;
+                        this.search_data = this.search_data.concat(response.data.results);
                     });
             },
             add_option_lecture(lecture){
@@ -50,6 +53,27 @@
                     this.$bus.$emit('add_option_lecture',lecture);
                 }
             }
+        },
+
+        mounted(){
+            const load_data = () =>{
+                if (this.notfound === false){
+                    this.page++;
+                    axios.get('lectures/unique/?search='+this.search_param+'&page='+this.page)
+                        .then((response) => {
+                            this.search_data = this.search_data.concat(response.data.results);
+                        })
+                        .catch(() => {
+                            this.notfound = true;
+                        });
+                }
+            };
+            const list = document.querySelector('#option_search_lecture_list');
+            list.addEventListener('scroll', function() {
+                if (list.scrollTop + list.clientHeight >= list.scrollHeight) {
+                    load_data();
+                }
+            });
         }
     }
 </script>
@@ -92,8 +116,13 @@
         color: #aaabd3;
     }
     #option_search_lecture_list{
+        -ms-overflow-style: none;
         height: calc(100% - 50px);
         overflow-y: scroll;
+    }
+
+    #option_search_lecture_list::-webkit-scrollbar {
+        display: none;
     }
 
     #lecture_data{

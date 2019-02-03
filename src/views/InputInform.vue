@@ -331,6 +331,7 @@
         float:left;
         border: none;
         font-weight: bold;
+        font-size: 11px;
         color: white;
         cursor: pointer;
     }

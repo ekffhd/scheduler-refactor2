@@ -1,6 +1,7 @@
 <template>
     <div id="input_inform_wrap">
         <div id="mobile_bar">
+            <img id="mobile_caser_icon" src="../assets/Caser2.png" width="50%">
             <div id="plus_icon_wrap">
                 <div class="wrap" @click="open_side_bar">
                     <div class="inner">
@@ -11,6 +12,7 @@
         </div>
         <div id="scheduler_wrap" @click="close_side_bar">
             <div id="scheduler_inner">
+                <img src="../assets/Caser.png" id="caser_icon" width="30%" style="margin-bottom: 5%; margin-left: 8%">
                 <scheduler id="scheduler"></scheduler>
                 <div id="submit_button_wrap">
                     <button id="submit_button">SUBMIT</button>
@@ -283,6 +285,7 @@
         width: 90%;
         margin-top: 5%;
     }
+
     #scheduler{
         display: inline-block;
         width: 80%;
@@ -358,6 +361,7 @@
         border-radius: 10px;
         cursor: pointer;
         outline: none;
+        margin-left: 9%;
     }
     #mobile_option_select_wrap{
         display: none;
@@ -429,6 +433,14 @@
             width: 100vw;
             height: 7%;
             color: white;
+        }
+        #mobile_caser_icon{
+            margin-left: 15%;
+            height: 97%;
+        }
+        #caser_icon{
+            display: none;
+
         }
         #plus_icon_wrap{
             display: inline-block;

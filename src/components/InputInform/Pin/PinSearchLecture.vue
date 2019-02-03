@@ -49,6 +49,7 @@
                 this.search_param = '';
                 axios.get('lectures/search/?search='+search_param)
                     .then((response) => {
+                        console.log(response);
                         this.search_data = response.data.results;
                     });
             },
@@ -103,6 +104,7 @@
         -ms-overflow-style: none;
         height: calc(100% - 50px);
         overflow-y: scroll;
+        z-index: 1000;
     }
 
     #pin_search_lecture_list::-webkit-scrollbar {

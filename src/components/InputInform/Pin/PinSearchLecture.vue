@@ -100,6 +100,7 @@
         color: #aaabd3;
     }
     #pin_search_lecture_list{
+        -ms-overflow-style: none;
         height: calc(100% - 50px);
         overflow-y: scroll;
     }

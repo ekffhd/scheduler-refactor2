@@ -121,6 +121,7 @@
         width: 100%;
         overflow-y: scroll;
         overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
     }
     #lecture_data{
         position: relative;

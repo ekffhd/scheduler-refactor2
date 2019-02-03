@@ -15,17 +15,19 @@
         </div>
         <div id="mobile_pin_search_lecture_list">
             <div id="lecture_data" v-for="(lecture, index) in search_data" @click="add_mobile_pin_lecture(lecture)" :key="index">
-                <div id="lecture_title"> <div class="wrap"><div class="inner">{{lecture.title}}</div></div> </div>
-                <div id="lecture_info">
+                <div id="lecture_title">
                     <div class="wrap">
                         <div class="inner">
-                            {{lecture.professor}} &nbsp; {{lecture.classroom}} &nbsp; {{lecture.point}} 학점
+                            {{lecture.title}}
                         </div>
                     </div>
                 </div>
+                <div id="lecture_info">
+                    {{lecture.professor}} &nbsp; {{lecture.classroom}} &nbsp; {{lecture.point}} 학점
+                </div>
                 <div id="lecture_time_wrap">
                     <div class="wrap">
-                        <div class="inner" style="text-align: center;">
+                        <div class="inner">
                             <div id="lecture_time" v-for="(time, index) in lecture.timetable" :key="index">
                                 {{time.day}} {{time.start.split(":")[0]+":"+time.start.split(":")[1]}}~{{time.end.split(":")[0]+":"+time.end.split(":")[1]}}
                             </div>
@@ -174,7 +176,6 @@
         color: #566270;
         height: 100%;
         width: 100%;
-
     }
     #mobile_pin_search_input_form_wrap{
         display: inline-block;
@@ -204,26 +205,29 @@
         overflow-y: scroll;
         overflow-x: hidden;
     }
+
     #lecture_data{
-        display: inline-block;
+        position: relative;
+        display:block;
         border-bottom: 1px solid #aaabd3;
         width: 100%;
-        height: 15%;
+        height: 18%;
         cursor: pointer;
-        padding: 10px 15px;
     }
     #lecture_data:hover{
         color: #353866;
         background-color:rgba(170, 173, 211,0.3);
     }
     #lecture_title{
-         display: inline-block;
-         width: 67%;
-         height: 45%;
-         font-size: 12px;
-         font-weight: bold;
+        position: absolute;
+        display: inline-block;
+        top: 10%;
+        left: 3%;
+        width: 65%;
+        height: 45%;
+        font-size: 12px;
+        font-weight: bold;
         text-align: left;
-        float: left;
      }
     .wrap{
         display: table;
@@ -238,20 +242,25 @@
     }
     #lecture_info{
         display: inline-block;
+        position: absolute;
         float: left;
-        width: 67%;
+        top:55%;
+        left: 3%;
+        width: 65%;
         height: 40%;
         font-size: 11px;
         text-align: left;
     }
     #lecture_time_wrap{
         display: inline-block;
+        position: absolute;
         width: 25%;
+        left: 70%;
+        top: 0;
         height: 100%;
         padding-right: 15px;
         font-size: 11px;
     }
-
 
 
     /*로딩 아이콘
@@ -273,5 +282,13 @@
     .fade-enter, .fade-leave-to {
         opacity: 0
     }*/
+    @media (max-width: 374px){
+        #lecture_info{
+            font-size: 10px;
+        }
+        #lecture_time{
+            font-size: 10px;
+        }
+    }
 
 </style>

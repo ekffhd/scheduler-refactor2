@@ -2,7 +2,7 @@
     <div id="mobile_pin_search_lecture_wrap">
         <div id="mobile_pin_search_input_form_wrap">
             <form v-on:submit.prevent="mobile_search_pin_lecture()">
-                <input id="search_input" placeholder="과목명/교수님성함" v-model="search_param" type="text" class="search_input"/>
+                <input id="search_input" placeholder="과목명/교수님성함/학과" v-model="search_param" type="text" class="search_input"/>
                 <i id="search_icon" class="fas fa-search"></i>
                 <!--
                 <transition  name="fade" id="fade">
@@ -47,16 +47,19 @@
         data(){
             return{
                 search_data:[],
-                search_param: ''
+                search_param: '',
+                page: 1,
+                notfound: false
             }
         },//data
         methods:{
             mobile_search_pin_lecture(){
-                const search_param = this.search_param;
-                this.search_param = '';
-                axios.get('lectures/search/?search='+search_param)
+                this.page = 1;
+                this.search_data = [];
+                this.notfound = false;
+                axios.get('lectures/search/?search='+this.search_param+'&page='+this.page)
                     .then((response) => {
-                        this.search_data = response.data.results;
+                        this.search_data = this.search_data.concat(response.data.results);
                     });
             },
             add_mobile_pin_lecture(lecture){
@@ -65,6 +68,26 @@
                     this.$bus.$emit('ad_pin_lecture',lecture);
                 }
             }
+        },
+        mounted(){
+            const load_data = () =>{
+                if (this.notfound === false){
+                    this.page++;
+                    axios.get('lectures/search/?search='+this.search_param+'&page='+this.page)
+                        .then((response) => {
+                            this.search_data = this.search_data.concat(response.data.results);
+                        })
+                        .catch(() => {
+                            this.notfound = true;
+                        });
+                }
+            };
+            const list = document.querySelector('#mobile_pin_search_lecture_list');
+            list.addEventListener('scroll', function() {
+                if (list.scrollTop + list.clientHeight >= list.scrollHeight) {
+                    load_data();
+                }
+            });
         }
     }
 </script>
@@ -116,10 +139,6 @@
         width: 100%;
         height: 18%;
         cursor: pointer;
-    }
-    #lecture_data:hover{
-        color: #353866;
-        background-color:rgba(170, 173, 211,0.3);
     }
     #lecture_title{
         position: absolute;

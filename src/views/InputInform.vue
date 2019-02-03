@@ -478,6 +478,8 @@
             display: none;
         }
         #plus_icon_wrap{
+            z-index: 1000;
+            position: relative;
             display: inline-block;
             float: right;
             width: 15%;

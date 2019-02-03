@@ -313,8 +313,8 @@
         outline: none;
         height: 80%;
         border-radius: 5px;
-        padding-left: 5px;
-        padding-right: 5px;
+        padding-left: 1.5%;
+        padding-right: 1.5%;
         float:left;
         border: none;
         font-weight: bold;

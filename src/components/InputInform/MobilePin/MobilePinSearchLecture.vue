@@ -65,7 +65,7 @@
             add_mobile_pin_lecture(lecture){
                 this.$store.dispatch('ADD_PIN_LECTURE', lecture);
                 if(lecture.out.status === "succeed"){
-                    this.$bus.$emit('ad_pin_lecture',lecture);
+                    this.$bus.$emit('add_pin_lecture',lecture);
                 }
             }
         },

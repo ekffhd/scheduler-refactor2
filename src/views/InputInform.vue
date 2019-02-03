@@ -46,13 +46,21 @@
             <div id="mobile_option_select_wrap">
                 <div style="display: inline-block; position: relative; width: 100%; height: 100%;">
                     <div id="mobile_break_time_title" style="background-color : #353866; color: white" @click="toggle_break_time_tab">
-                        공강선택
+                        <div class="wrap">
+                            <div class="inner">
+                                공강선택
+                            </div>
+                        </div>
                     </div>
                     <div id="mobile_input_basic_inform_wrap">
                         <mobile-input-basic-inform  id="mobile_input_basic_inform" :class="[active_tab ==='break' ? 'active_tab': 'un_active_tab'] "></mobile-input-basic-inform>
                     </div>
                     <div id="mobile_lecture_layout_title" style="background-color : #353866; color: white" @click="toggle_add_lecture_tab">
-                        시간표 담기
+                        <div class="wrap">
+                            <div class="inner">
+                                시간표 담기
+                            </div>
+                        </div>
                     </div>
                     <div id="mobile_lecture_layout_wrap">
                         <div id="mobile_lecture_type_button_wrap">
@@ -74,7 +82,12 @@
                         </div>
                     </div>
                     <div id="mobile_added_lecture_title" style="background-color : #353866; color: white"  @click="toggle_added_lecture_list_tab">
-                        추가된 강의 목록
+                        <div class="wrap">
+                            <div class="inner">
+                                추가된 강의 목록
+
+                            </div>
+                        </div>
                     </div>
                     <div id="mobile_added_lecture_list_wrap" >
 
@@ -547,7 +560,7 @@
             position: absolute;
             width: 100%;
             height: 5%;
-            top: 5%;
+            top: -100%;
             left: 0;
             transition: .7s;
             backface-visibility: hidden;
@@ -558,7 +571,7 @@
             height: 5%;
             width: 100%;
             left: 0;
-            top: calc(5% + 1px);
+            top: calc(5%);
             background-color : #353866;
             color: white;
             z-index: 1200;
@@ -571,6 +584,7 @@
         }
         #mobile_lecture_wrap{
             display: inline-block;
+
             width: 100%;
             height: 84%;
         }
@@ -591,7 +605,7 @@
             height: 5%;
             width: 100%;
             left: 0;
-            top: calc(10% + 2px);
+            top: calc(10% + 1px);
             background-color : #353866;
             color: white;
             z-index: 1200;

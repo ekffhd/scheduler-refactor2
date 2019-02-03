@@ -15,7 +15,13 @@
         </div>
         <div id="option_search_lecture_list">
             <div id="lecture_data" v-for="(lecture, index) in search_data" @click="add_option_lecture(lecture)" :key="index">
-                <div id="lecture_title"> <div class="wrap"><div class="inner"><div style="display: inline-block;">{{lecture.title}}</div></div></div> </div>
+                <div id="lecture_title">
+                    <div class="wrap">
+                        <div class="inner">
+                            {{lecture.title}}
+                        </div>
+                    </div>
+                </div>
                 <div id="lecture_info">
                         {{lecture.code}} {{lecture.point}}학점
                 </div>
@@ -191,35 +197,51 @@
         overflow-x: hidden;
     }
     #lecture_data{
-        display: inline-block;
+        position: relative;
+        display:block;
         border-bottom: 1px solid #aaabd3;
         width: 100%;
-        height: 15%;
+        height: 18%;
         cursor: pointer;
-        padding: 10px 15px;
     }
     #lecture_data:hover{
         color: #353866;
         background-color:rgba(170, 173, 211,0.3);
     }
+
     #lecture_title{
+        position: absolute;
         display: inline-block;
+        top: 10%;
+        left: 3%;
         width: 100%;
         height: 45%;
         font-size: 12px;
         font-weight: bold;
         text-align: left;
     }
+    .wrap{
+        display: table;
+        height: 100%;
+        width: 100%;
 
+    }
+    .inner{
+        display: table-cell;
+        vertical-align: middle;
+        text-align: left;
+    }
     #lecture_info{
         display: inline-block;
+        position: absolute;
+        float: left;
+        top:55%;
+        left: 3%;
         width: 100%;
-        height: 55%;
+        height: 40%;
         font-size: 11px;
         text-align: left;
     }
-
-
     /*로딩 아이콘
     .loading {
         text-align: center;
@@ -239,5 +261,11 @@
     .fade-enter, .fade-leave-to {
         opacity: 0
     }*/
+
+    @media (max-width: 400px){
+        #lecture_info{
+            font-size: 10px;
+        }
+    }
 
 </style>

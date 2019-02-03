@@ -46,6 +46,10 @@
         display: inline-block;
         overflow-y: scroll;
         width: 100%;
+        -ms-overflow-style: none;
+    }
+    #pin_added_lecture_list::-webkit-scrollbar {
+        display: none;
     }
     #lecture_data_wrap{
         position: relative;

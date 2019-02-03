@@ -158,11 +158,15 @@
         float: left;
     }
     #set_break_wrap{
+        -ms-overflow-style: none;
         display: inline-block;
         width: 70%;
         height: 70px;
         overflow-y: scroll;
         float: right;
+    }
+    #set_break_wrap::-webkit-scrollbar {
+        display: none;
     }
     .break_time_select{
         display: inline-block;

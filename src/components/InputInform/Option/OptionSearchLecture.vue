@@ -88,8 +88,8 @@
         margin-top: 1px;
         background-color: white;
         color: #566270;
-        height: calc(100% - 1px);
-        width: 100%;
+        height: calc(100% - 2px);
+        width: calc(100% - 1px);
     }
     #option_search_input_form_wrap{
         display: inline-block;

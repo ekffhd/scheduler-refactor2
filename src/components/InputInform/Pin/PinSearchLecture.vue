@@ -95,8 +95,8 @@
         margin-top: 1px;
         background-color: white;
         color: #566270;
-        height: calc(100% - 1px);
-        width: 100%;
+        height: calc(100% - 2px);
+        width: calc(100% - 1px);
     }
     #pin_search_input_form_wrap{
         display: inline-block;
@@ -126,6 +126,7 @@
         -ms-overflow-style: none;
         height: calc(100% - 50px);
         overflow-y: scroll;
+
     }
 
     #pin_search_lecture_list::-webkit-scrollbar {

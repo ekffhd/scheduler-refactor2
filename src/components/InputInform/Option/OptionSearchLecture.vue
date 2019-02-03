@@ -32,16 +32,19 @@
         data(){
             return{
                 search_data: [],
-                search_param: ''
+                search_param: '',
+                page: 1,
+                notfound: false
             }
         },//data
         methods:{
             search_option_lecture(){
-                const search_param = this.search_param;
-                this.search_param = '';
-                axios.get('lectures/unique/?search='+search_param)
+                this.page = 1;
+                this.search_data = [];
+                this.notfound = false;
+                axios.get('lectures/unique/?search='+this.search_param+'&page='+this.page)
                     .then((response) => {
-                        this.search_data = response.data.results;
+                        this.search_data = this.search_data.concat(response.data.results);
                     });
             },
             add_option_lecture(lecture){
@@ -50,6 +53,27 @@
                     this.$bus.$emit('add_option_lecture',lecture);
                 }
             }
+        },
+
+        mounted(){
+            const load_data = () =>{
+                if (this.notfound === false){
+                    this.page++;
+                    axios.get('lectures/unique/?search='+this.search_param+'&page='+this.page)
+                        .then((response) => {
+                            this.search_data = this.search_data.concat(response.data.results);
+                        })
+                        .catch(() => {
+                            this.notfound = true;
+                        });
+                }
+            };
+            const list = document.querySelector('#option_search_lecture_list');
+            list.addEventListener('scroll', function() {
+                if (list.scrollTop + list.clientHeight >= list.scrollHeight) {
+                    load_data();
+                }
+            });
         }
     }
 </script>
@@ -92,8 +116,13 @@
         color: #aaabd3;
     }
     #option_search_lecture_list{
+        -ms-overflow-style: none;
         height: calc(100% - 50px);
         overflow-y: scroll;
+    }
+
+    #option_search_lecture_list::-webkit-scrollbar {
+        display: none;
     }
 
     #lecture_data{

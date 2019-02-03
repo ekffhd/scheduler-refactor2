@@ -17,25 +17,28 @@
             <p id="set_break">공강 선택 </p>
             <i class="fas fa-plus-circle" @click="add_break_time()"></i>
             <div id="set_break_wrap">
-                <div v-for="(break_time, index) in break_time_data" :key="index" class="time_select">
-                    <select v-model="break_time.day" class="day_select">
-                        <option value="mon">월</option>
-                        <option value="tue">화</option>
-                        <option value="wed">수</option>
-                        <option value="thu">목</option>
-                        <option value="fri">금</option>
-                        <option value="all">매일</option>
-                    </select>
-                    <select v-model="break_time.start_time" class="time_select">
-                        <option v-for="(start,index) in time_list" :key="index" >{{start}}</option>
-                    </select>
-                    ~
-                    <select v-model="break_time.end_time" class="end_time_select">
-                        <option v-for="(end,index) in time_list" :key="index" >{{end}}</option>
-                    </select>
-                    <div class="minus_icon">
-                        <i @click="sub_break_time(index)" class="fas fa-minus-circle"></i>
+                <div style="display: inline-block;position: relative; height: 100%; width: 100%;">
+                    <div v-for="(break_time, index) in break_time_data" :key="index" class="break_time_select">
+                        <select v-model="break_time.day" class="day_select">
+                            <option value="mon">월</option>
+                            <option value="tue">화</option>
+                            <option value="wed">수</option>
+                            <option value="thu">목</option>
+                            <option value="fri">금</option>
+                            <option value="all">매일</option>
+                        </select>
+                        <select v-model="break_time.start_time" class="time_select">
+                            <option v-for="(start,index) in time_list" :key="index" >{{start}}</option>
+                        </select>
+                        ~
+                        <select v-model="break_time.end_time" class="end_time_select">
+                            <option v-for="(end,index) in time_list" :key="index" >{{end}}</option>
+                        </select>
+                        <div class="minus_icon">
+                            <i @click="sub_break_time(index)" class="fas fa-minus-circle"></i>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -139,38 +142,46 @@
     #set_point_input:focus{
         box-shadow: 1px 1px 5px;
     }
-
     #break_wrap{
         display: inline-block;
+        position: relative;
         width: 100%;
+        height: 100%;
     }
     #break_wrap > i{
         display: inline-block;
+        position: absolute;
+        top: 0;
+        left: 20%;
         width: 10%;
-        float: left;
         height: 100%;
         font-size: 17px;
     }
     #set_break{
         display: inline-block;
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 20%;
         font-weight: bold;
-        float: left;
     }
     #set_break_wrap{
         display: inline-block;
+        position: absolute;
+        left: 30%;
+        height: 100%;
         width: 70%;
-        height: 70px;
         overflow-y: scroll;
-        float: right;
     }
     .break_time_select{
         display: inline-block;
         width: 100%;
+        margin-bottom: 5px;
     }
     .day_select{
         display: inline-block;
         width: 20%;
+        margin-right: 10px;
         outline: none;
     }
     .minus_icon{

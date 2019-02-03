@@ -22,7 +22,8 @@
     height: 100vh;
     color: #2c3e50;
   }
-
-
+  ::-webkit-scrollbar {
+    display: none;
+  }
 
 </style>

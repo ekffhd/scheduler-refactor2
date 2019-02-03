@@ -1,24 +1,38 @@
 <template>
-    <div id="option_search_lecture_wrap">
-        <div id="option_search_input_form_wrap">
+    <div id="mobile_pin_search_lecture_wrap">
+        <div id="mobile_pin_search_input_form_wrap">
             <form>
                 <input id="search_input" placeholder="과목명/교수님성함" type="text" class="search_input"/>
                 <i id="search_icon" class="fas fa-search"></i>
                 <!--
                 <transition  name="fade" id="fade">
                     <div class="loading" v-show="loading">
-                        <span class="fa fa-soptionner fa-soption"></span> Loading
+                        <span class="fa fa-smobile_pinner fa-smobile_pin"></span> Loading
                     </div>
                 </transition>
                 -->
             </form>
         </div>
-        <div id="option_search_lecture_list">
-            <div id="lecture_data" v-for="(lecture, index) in search_data" @click="add_option_lecture(lecture)" :key="index">
-                <div id="lecture_title"> <div class="wrap"><div class="inner"><div style="display: inline-block;">{{lecture.title}}</div></div></div> </div>
+        <div id="mobile_pin_search_lecture_list">
+            <div id="lecture_data" v-for="(lecture, index) in search_data" @click="add_mobile_pin_lecture(lecture)" :key="index">
+                <div id="lecture_title"> <div class="wrap"><div class="inner">{{lecture.title}}</div></div> </div>
                 <div id="lecture_info">
-                        {{lecture.code}} {{lecture.point}}학점
+                    <div class="wrap">
+                        <div class="inner">
+                            {{lecture.professor}} &nbsp; {{lecture.classroom}} &nbsp; {{lecture.point}} 학점
+                        </div>
+                    </div>
                 </div>
+                <div id="lecture_time_wrap">
+                    <div class="wrap">
+                        <div class="inner" style="text-align: center;">
+                            <div id="lecture_time" v-for="(time, index) in lecture.timetable" :key="index">
+                                {{time.day}} {{time.start.split(":")[0]+":"+time.start.split(":")[1]}}~{{time.end.split(":")[0]+":"+time.end.split(":")[1]}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -26,7 +40,7 @@
 
 <script>
     export default {
-        name: "OptionSearchLecture",
+        name: "MobilePinSearchLecture",
         data(){
             return{
                 search_data:[
@@ -140,10 +154,10 @@
             }
         },//data
         methods:{
-            add_option_lecture(lecture){
-                this.$store.dispatch('ADD_OPTION_LECTURE', lecture);
+            add_mobile_pin_lecture(lecture){
+                this.$store.dispatch('ADD_PIN_LECTURE', lecture);
                 if(lecture.out.status === "succeed"){
-                    this.$bus.$emit('add_option_lecture',lecture);
+                    this.$bus.$emit('ad_pin_lecture',lecture);
                 }
             }
         }
@@ -155,14 +169,14 @@
         margin: 0;
         padding: 0;
     }
-    #option_search_lecture_wrap{
+    #mobile_pin_search_lecture_wrap{
         display: inline-block;
         color: #566270;
         height: 100%;
         width: 100%;
 
     }
-    #option_search_input_form_wrap{
+    #mobile_pin_search_input_form_wrap{
         display: inline-block;
         background-color: white;
         border: none;
@@ -183,7 +197,7 @@
     #search_icon{
         color: #aaabd3;
     }
-    #option_search_lecture_list{
+    #mobile_pin_search_lecture_list{
         display: inline-block;
         height: calc(100% - 50px);
         width: 100%;
@@ -203,21 +217,41 @@
         background-color:rgba(170, 173, 211,0.3);
     }
     #lecture_title{
-        display: inline-block;
+         display: inline-block;
+         width: 67%;
+         height: 45%;
+         font-size: 12px;
+         font-weight: bold;
+        text-align: left;
+        float: left;
+     }
+    .wrap{
+        display: table;
+        height: 100%;
         width: 100%;
-        height: 45%;
-        font-size: 12px;
-        font-weight: bold;
+
+    }
+    .inner{
+        display: table-cell;
+        vertical-align: middle;
         text-align: left;
     }
-
     #lecture_info{
         display: inline-block;
-        width: 100%;
-        height: 55%;
+        float: left;
+        width: 67%;
+        height: 40%;
         font-size: 11px;
         text-align: left;
     }
+    #lecture_time_wrap{
+        display: inline-block;
+        width: 25%;
+        height: 100%;
+        padding-right: 15px;
+        font-size: 11px;
+    }
+
 
 
     /*로딩 아이콘

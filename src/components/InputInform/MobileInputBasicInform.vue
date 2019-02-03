@@ -14,7 +14,6 @@
             <p id="left_point">남은 학점 : 10</p>
         </div>-->
         <div id="break_wrap">
-            <p id="set_break">공강 선택 </p>
             <i class="fas fa-plus-circle" @click="add_break_time()"></i>
             <div id="set_break_wrap">
                 <div v-for="(break_time, index) in break_time_data" :key="index" class="break_time_select">
@@ -105,10 +104,10 @@
         padding: 0;
     }
     #input_basic_inform{
-        margin-top: 10%;
         height: 100%;
         font-size: 13px;
         color: #353866;
+
     }
     #point_wrap{
         display: inline;
@@ -145,6 +144,7 @@
     #break_wrap{
         display: inline-block;
         width: 100%;
+        height: 90%;
     }
     #break_wrap > i{
         display: inline-block;
@@ -163,12 +163,15 @@
     }
     #set_break_wrap{
         display: inline-block;
-        width: 80%;
+        width: 70%;
         margin-left: 10%;
-        height: 70px;
+        height: 100%;
         overflow-y: scroll;
-        float: left;
+        float: right;
         padding-left: 3%;
+    }
+    #set_break{
+        height: 30%;
     }
     select{
         background-color: white;
@@ -190,7 +193,7 @@
     }
     .break_time_select{
         display: inline-block;
-        height: 25%;
+        height: 10%;
         width: 100%;
     }
     .day_select{

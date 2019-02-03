@@ -43,32 +43,62 @@
                 <option-added-lecture-list v-show="pin === false"></option-added-lecture-list>
             </div>
         </div>
-        <div id="mobile_option_select_wrap">
-            <div id="mobile_input_basic_inform_wrap">
-                <div id="mobile_break_time_tab_wrap" >
-                    <div id="mobile_break_time_title" @click="toggle_break_time_tab">
+            <div id="mobile_option_select_wrap">
+                <div style="display: inline-block; position: relative; width: 100%; height: 100%;">
+                    <div id="mobile_break_time_title" style="background-color : #353866; color: white" @click="toggle_break_time_tab">
                         공강선택
                     </div>
-                        <mobile-input-basic-inform  id="mobile_input_basic_inform" style="background-color :red;" :class="[active_tab ==='break' ? 'active_tab': 'un_active_tab'] "></mobile-input-basic-inform>
+                    <div id="mobile_input_basic_inform_wrap">
+                        <mobile-input-basic-inform  id="mobile_input_basic_inform" :class="[active_tab ==='break' ? 'active_tab': 'un_active_tab'] "></mobile-input-basic-inform>
+                    </div>
+                    <div id="mobile_lecture_layout_title" style="background-color : #353866; color: white" @click="toggle_add_lecture_tab">
+                        시간표 담기
+                    </div>
+                    <div id="mobile_lecture_layout_wrap">
+                        <div id="mobile_lecture_type_button_wrap">
+                            <button :class="[isActive ? 'active':'un_active']" @click="turn_to_pin">고정 강의</button>
+                            <button :class="[isActive ? 'un_active':'active']" @click="turn_to_option"
+                                    style="margin-left: 5px;">선택 강의</button>
+                            <div class="mobile_option_description" v-if="isActive">
+                                OOO교수님의 △△수업은 꼭들어야해!<br>
+                                반드시 들어야하는 특정 강의를 선택해주세요.
+                            </div>
+                            <div class="mobile_option_description" v-else>
+                                △△ 수업을 듣고싶은데, 시간과 교수님은 상관없어!<br>
+                                가능한 경우의 수를 알고싶은 강의를 선택해주세요.
+                            </div>
+                        </div>
+                        <div id="mobile_lecture_wrap">
+                            <mobile-pin-search-lecture v-show="pin === true"></mobile-pin-search-lecture>
+                            <mobile-option-search-lecture v-show="pin === false"></mobile-option-search-lecture>
+                        </div>
+                    </div>
+                    <div id="mobile_added_lecture_title" style="background-color : #353866; color: white"  @click="toggle_added_lecture_list_tab">
+                        추가된 강의 목록
+                    </div>
+                    <div id="mobile_added_lecture_list_wrap" >
+
+                    </div>
+                    <!--
+                    <div id="mobile_lecture_type_button_wrap">
+                        <button :class="[isActive ? 'active':'un_active']" @click="turn_to_pin">고정 강의</button>
+                        <button :class="[isActive ? 'un_active':'active']" @click="turn_to_option"
+                                style="margin-left: 5px;">선택 강의</button>
+                        <div class="mobile_option_description" v-if="isActive">
+                            OOO교수님의 △△수업은 꼭들어야해!<br>
+                            반드시 들어야하는 특정 강의를 선택해주세요.
+                        </div>
+                        <div class="mobile_option_description" v-else>
+                            △△ 수업을 듣고싶은데, 시간과 교수님은 상관없어!<br>
+                            가능한 경우의 수를 알고싶은 강의를 선택해주세요.
+                        </div>
+                    </div>
+                    <div id="mobile_lecture_layout_wrap">
+                        <mobile-option-search-lecture></mobile-option-search-lecture>
+                    </div>
+                    -->
                 </div>
             </div>
-            <div id="mobile_lecture_type_button_wrap">
-                <button :class="[isActive ? 'active':'un_active']" @click="turn_to_pin">고정 강의</button>
-                <button :class="[isActive ? 'un_active':'active']" @click="turn_to_option"
-                        style="margin-left: 5px;">선택 강의</button>
-                <div class="mobile_option_description" v-if="isActive">
-                    OOO교수님의 △△수업은 꼭들어야해!<br>
-                    반드시 들어야하는 특정 강의를 선택해주세요.
-                </div>
-                <div class="mobile_option_description" v-else>
-                    △△ 수업을 듣고싶은데, 시간과 교수님은 상관없어!<br>
-                    가능한 경우의 수를 알고싶은 강의를 선택해주세요.
-                </div>
-            </div>
-            <div id="mobile_lecture_layout_wrap">
-                <mobile-option-search-lecture></mobile-option-search-lecture>
-            </div>
-        </div>
     </div>
 </template>
 
@@ -81,6 +111,7 @@
     import OptionLectureLayout from '../components/InputInform/Option/OptionLectureLayout'
     import OptionAddedLectureList from '../components/InputInform/Option/OptionAddedLectureList'
     import MobileOptionSearchLecture from '../components/InputInform/MobileOption/MobileOptionSearchLecture'
+    import MobilePinSearchLecture from '../components/InputInform/MobilePin/MobilePinSearchLecture'
 
     export default {
         name: "InputInform",
@@ -93,13 +124,14 @@
             'option-added-lecture-list': OptionAddedLectureList,
             'mobile-input-basic-inform': MobileInputBasicInform,
             'mobile-option-search-lecture': MobileOptionSearchLecture,
+            'mobile-pin-search-lecture': MobilePinSearchLecture,
         },
         data(){
             return{
                 isActive: true,
                 pin: true,
                 open: true,
-                active_tab: 'break',
+                active_tab: '',
             }
         },
         methods:{
@@ -118,8 +150,102 @@
                 document.getElementById("mobile_option_select_wrap").style.left = "-100%";
             },
             toggle_break_time_tab(){
-                console.log('hi');
-                document.getElementById("mobile_input_basic_inform").style.top = "-1000%";
+                if(this.active_tab !== 'break'){
+                    this.active_tab = 'break';
+
+                    //공강시간 탭
+                    document.getElementById("mobile_input_basic_inform_wrap").style.top = "5%";
+                    document.getElementById("mobile_input_basic_inform_wrap").style.height = "20%";
+                    document.getElementById("mobile_input_basic_inform").style.top = "5%";
+                    document.getElementById("mobile_input_basic_inform").style.height = "100%";
+
+
+                    //시간표 추가 탭
+                    document.getElementById('mobile_lecture_layout_title').style.top = "25%";
+                    document.getElementById("mobile_lecture_layout_wrap").style.top = "-100%";
+                    document.getElementById("mobile_lecture_layout_wrap").style.height = "5%";
+
+                    //추가된 강의 목록 탭
+                    document.getElementById("mobile_added_lecture_title").style.top = "30%";
+                    document.getElementById("mobile_added_lecture_list_wrap").style.top = "-100%";
+                    document.getElementById("mobile_added_lecture_list_wrap").style.height = "5%";
+
+                }
+                else{
+                    this.active_tab = '';
+                    document.getElementById("mobile_input_basic_inform").style.top = "-100%";
+                    document.getElementById("mobile_input_basic_inform").style.height = "0";
+                    document.getElementById("mobile_input_basic_inform_wrap").style.height = "5%";
+
+                    //시간표 추가 탭
+                    document.getElementById('mobile_lecture_layout_title').style.top = "5%";
+                    //document.getElementById("mobile_lecture_layout_wrap").style.top = "5%";
+
+                    //추가된 강의 목록 탭
+                    document.getElementById("mobile_added_lecture_title").style.top = "10%";
+                    document.getElementById("mobile_added_lecture_list_wrap").style.top = "-100%";
+                    document.getElementById("mobile_added_lecture_list_wrap").style.height = "5%";
+                }
+            },
+            toggle_add_lecture_tab(){
+                if(this.active_tab !== 'add_lecture'){
+                    this.active_tab = 'add_lecture';
+                    //공강시간 탭
+                    document.getElementById("mobile_input_basic_inform_wrap").style.top = "-100%";
+                    document.getElementById("mobile_input_basic_inform_wrap").style.height = "5%";
+
+                    //시간표 추가 탭
+                    document.getElementById('mobile_lecture_layout_title').style.top = "5%";
+                    document.getElementById("mobile_lecture_layout_wrap").style.top = "10%";
+                    document.getElementById("mobile_lecture_layout_wrap").style.height = "80%";
+
+                    //추가된 강의 목록 탭
+                    document.getElementById("mobile_added_lecture_title").style.top = "90%";
+                    document.getElementById("mobile_added_lecture_list_wrap").style.top = "-100%";
+                    document.getElementById("mobile_added_lecture_list_wrap").style.height = "5%";
+                }
+                else{
+                    this.active_tab = '';
+                    //시간표 추가 탭
+                    document.getElementById("mobile_lecture_layout_wrap").style.top = "-100%";
+                    document.getElementById("mobile_lecture_layout_wrap").style.height = "5%";
+
+                    //추가된 강의 목록 탭
+                    document.getElementById("mobile_added_lecture_title").style.top = "10%";
+                }
+            },
+            toggle_added_lecture_list_tab(){
+                if(this.active_tab !== 'lecture_list'){
+                    this.active_tab = 'lecture_list';
+                    //공강시간 탭
+                    document.getElementById("mobile_break_time_title").style.top = "0%";
+                    document.getElementById("mobile_input_basic_inform_wrap").style.top = "-100%";
+                    document.getElementById("mobile_input_basic_inform_wrap").style.height = "5%";
+
+                    //시간표 추가 탭
+                    document.getElementById("mobile_lecture_layout_title").style.top = "5%";
+                    document.getElementById("mobile_lecture_layout_wrap").style.top = "-100%";
+                    document.getElementById("mobile_lecture_layout_wrap").style.height = "5%";
+
+
+                    //추가된 강의 목록 탭
+                    document.getElementById("mobile_added_lecture_title").style.top = "10%";
+                    document.getElementById("mobile_added_lecture_list_wrap").style.top = "15%";
+                    document.getElementById("mobile_added_lecture_list_wrap").style.height = "80%";
+                }
+                else{
+                    this.active_tab = '';
+                    //공강시간 탭
+
+                    //시간표 추가 탭
+                    document.getElementById("mobile_lecture_layout_wrap").style.height = "-100%";
+                    document.getElementById("mobile_lecture_layout_wrap").style.height = "5%";
+
+                    //추가된 강의 목록 탭
+                    document.getElementById("mobile_added_lecture_list_wrap").style.top = "-100%";
+                    document.getElementById("mobile_added_lecture_list_wrap").style.height = "5%";
+
+                }
             }
         }
     }
@@ -329,41 +455,37 @@
             background-color: #f8faff;
         }
         #mobile_break_time_tab_wrap{
+            /*
             display: inline-block;
+            position: relative;
             width: 100%;
-            border: 1px solid;
+            height: 15%;
+            z-index: 1200;*/
         }
         #mobile_break_time_title{
             display: inline-block;
-            position: relative;
-            background-color: #f8faff;
+            position: absolute;
+            height: 5%;
             top: 0;
-            left: 0;
-            height: 100%;
             width: 100%;
-            font-weight: bold;
+            left: 0;
             z-index: 1200;
+            background-color : #353866;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+
         }
         #mobile_input_basic_inform{
             position: absolute;
             display: inline-block;
-            width: 100%;
+            top: -100%;
             left: 0;
-            top: 100%;
-            transition: .7s;
+            width: 100%;
+            height: 85%;
+            transition: 1s;
             backface-visibility: hidden;
-            z-index: 1100;
-            /**
-
-            position: fixed;
-            display: inline-block;
-            width: 90%;
-            left: -100%;
-            height: 100%;
-
-            z-index: 1000;
-            background-color: #f8faff;/
-             */
+            background-color:#edf0f9;
         }
         .active_tab{
             display: inline-block;
@@ -372,6 +494,7 @@
             display: none;
         }
         #mobile_option_select_wrap{
+            /*사이드바 전체*/
             position: fixed;
             display: inline-block;
             width: 90%;
@@ -380,13 +503,23 @@
             transition: .7s;
             backface-visibility: hidden;
             z-index: 1000;
-            background-color: #f8faff;
+            background-color:#edf0f9;
         }
         #mobile_input_basic_inform_wrap{
-            position: relative;
+            position: absolute;
+            height: 5%;
+            width: 100%;
+            transition: .7s;
+            backface-visibility: hidden;
+            overflow: hidden;
+            background-color: #edf0f9;
         }
         #mobile_lecture_type_button_wrap{
+            display: inline-block;
+            padding-top: 2%;
             padding-left: 5%;
+            width: 100%;
+            height: 14%;
         }
         #mobile_lecture_type_button_wrap > button{
             width: 20%;
@@ -398,19 +531,76 @@
             outline: none;
             float: left;
             margin-bottom: 3%;
-
+            font-size: 11px;
         }
         .mobile_option_description{
             display: inline-block;
             font-size: 11px;
             width: 100%;
+            height: calc(88% - 30px);
             text-align: left;
             font-weight: bold;
         }
+
         #mobile_lecture_layout_wrap{
             display: inline-block;
-            height: 40%;
+            position: absolute;
             width: 100%;
+            height: 5%;
+            top: 5%;
+            left: 0;
+            transition: .7s;
+            backface-visibility: hidden;
+        }
+        #mobile_lecture_layout_title{
+            display: inline-block;
+            position: absolute;
+            height: 5%;
+            width: 100%;
+            left: 0;
+            top: calc(5% + 1px);
+            background-color : #353866;
+            color: white;
+            z-index: 1200;
+            transition: .5s;
+            backface-visibility: hidden;
+            border-top: 1px solid white;
+            font-weight: bold;
+            font-size: 14px;
+
+        }
+        #mobile_lecture_wrap{
+            display: inline-block;
+            width: 100%;
+            height: 84%;
+        }
+        #mobile_added_lecture_list_wrap{
+            display: inline-block;
+            position: absolute;
+            width: 100%;
+            height: 5%;
+            background-color: #edf0f9;
+            top: 10%;
+            left: 0;
+            transition: .7s;
+            backface-visibility: hidden;
+        }
+        #mobile_added_lecture_title{
+            display: inline-block;
+            position: absolute;
+            height: 5%;
+            width: 100%;
+            left: 0;
+            top: calc(10% + 2px);
+            background-color : #353866;
+            color: white;
+            z-index: 1200;
+            transition: .5s;
+            backface-visibility: hidden;
+            border-top: 1px solid white;
+            font-weight: bold;
+            font-size: 14px;
+
         }
 
     }

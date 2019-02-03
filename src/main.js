@@ -12,7 +12,7 @@ Vue.use(VueAxios, axios);
 Vue.config.productionTip = false;
 Vue.prototype.$bus = new Vue();
 
-axios.defaults.baseURL = "http://127.0.0.1:8000/api/";
+axios.defaults.baseURL = "http://scheduler-api.ap-northeast-2.elasticbeanstalk.com/api/";
 
 new Vue({
   router,

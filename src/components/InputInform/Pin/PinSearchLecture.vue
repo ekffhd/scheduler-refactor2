@@ -1,8 +1,8 @@
 <template>
     <div id="pin_search_lecture_wrap">
         <div id="pin_search_input_form_wrap">
-            <form>
-                <input id="search_input" placeholder="과목명/교수님성함" type="text" class="search_input"/>
+            <form v-on:submit.prevent="search_pin_lecture()">
+                <input id="search_input" v-model="search_param" placeholder="과목명/교수님성함" type="text" class="search_input"/>
                 <i id="search_icon" class="fas fa-search"></i>
                 <!--
                 <transition  name="fade" id="fade">
@@ -34,14 +34,24 @@
 </template>
 
 <script>
+    import axios from 'axios';
     export default {
         name: "PinSearchLecture",
         data(){
             return{
-                search_data:[]
+                search_data:[],
+                search_param: ''
             }
         },//data
         methods:{
+            search_pin_lecture(){
+                const search_param = this.search_param;
+                this.search_param = '';
+                axios.get('lectures/search/?search='+search_param)
+                    .then((response) => {
+                        this.search_data = response.data.results;
+                    });
+            },
             add_pin_lecture(lecture){
                 this.$store.dispatch('ADD_PIN_LECTURE', lecture);
                 if(lecture.out.status === "succeed"){
@@ -63,6 +73,7 @@
         background-color: white;
         color: #566270;
         height: calc(100% - 1px);
+        width: 100%;
     }
     #pin_search_input_form_wrap{
         display: inline-block;

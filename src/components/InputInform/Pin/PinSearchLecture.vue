@@ -1,8 +1,8 @@
 <template>
     <div id="pin_search_lecture_wrap">
         <div id="pin_search_input_form_wrap">
-            <form>
-                <input id="search_input" placeholder="과목명/교수님성함" type="text" class="search_input"/>
+            <form v-on:submit.prevent="search_pin_lecture()">
+                <input id="search_input" v-model="search_param" placeholder="과목명/교수님성함" type="text" class="search_input"/>
                 <i id="search_icon" class="fas fa-search"></i>
                 <!--
                 <transition  name="fade" id="fade">
@@ -34,96 +34,24 @@
 </template>
 
 <script>
+    import axios from 'axios';
     export default {
         name: "PinSearchLecture",
         data(){
             return{
-                search_data:[
-                    {
-                        title: '문제해결및실습:JAVA',
-                        professor: '안용학',
-                        classroom: '율401',
-                        point: '3',
-                        code: '001',
-                        timetable:[
-                            {
-                                day: '화',
-                                start: '13:30',
-                                end: '15:00',
-                            },
-                            {
-                                day: '목',
-                                start: '13:30',
-                                end: '15:00'
-                            }
-                        ]
-                    },//JAVA
-                    {
-                        title: '공학설계기초(산학프로젝트입문)',
-                        professor: '송재욱',
-                        classroom: '광711',
-                        point: '3',
-                        code: '002',
-                        timetable:[
-                            {
-                                day: '월',
-                                start: '13:30',
-                                end: '15:00',
-                            },
-                            {
-                                day: '수',
-                                start: '13:30',
-                                end: '15:00',
-                            }
-                        ]
-                    },//공학설계
-                    {
-                        title: '컴퓨터구조론',
-                        professor: '박기호',
-                        classroom: '율305',
-                        point: '3',
-                        code: '003',
-                        timetable:[
-                            {
-                                day: '화',
-                                start: '16:30',
-                                end: '18:00',
-                            },
-                            {
-                                day: '목',
-                                start: '16:30',
-                                end: '18:00'
-                            }
-                        ]
-                    },//컴푸터구조론
-                    {
-                        title: '알고리즘및실습',
-                        professor: '나중채',
-                        classroom: '율202, 율 404',
-                        point: '4',
-                        code: '004',
-                        timetable:[
-                            {
-                                day: '화',
-                                start: '12:00',
-                                end: '13:30',
-                            },
-                            {
-                                day: '화',
-                                start: '18:00',
-                                end: '20:00',
-                            },
-                            {
-                                day: '목',
-                                start: '12:00',
-                                end: '13:30',
-                            }
-                        ]
-                    }
-                ]
+                search_data:[],
+                search_param: ''
             }
         },//data
         methods:{
+            search_pin_lecture(){
+                const search_param = this.search_param;
+                this.search_param = '';
+                axios.get('lectures/search/?search='+search_param)
+                    .then((response) => {
+                        this.search_data = response.data.results;
+                    });
+            },
             add_pin_lecture(lecture){
                 this.$store.dispatch('ADD_PIN_LECTURE', lecture);
                 if(lecture.out.status === "succeed"){
@@ -145,6 +73,7 @@
         background-color: white;
         color: #566270;
         height: calc(100% - 1px);
+        width: 100%;
     }
     #pin_search_input_form_wrap{
         display: inline-block;
@@ -171,6 +100,7 @@
         color: #aaabd3;
     }
     #pin_search_lecture_list{
+        -ms-overflow-style: none;
         height: calc(100% - 50px);
         overflow-y: scroll;
     }

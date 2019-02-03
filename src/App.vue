@@ -21,8 +21,11 @@
     width: 100vw;
     height: 100vh;
     color: #2c3e50;
+    overflow: -moz-scrollbars-none;
+    -ms-overflow-style: none;
   }
-
-
+  ::-webkit-scrollbar {
+    display: none;
+  }
 
 </style>

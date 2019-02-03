@@ -3,11 +3,17 @@
         <div class="inner" >
             <div id="input_inform_wrap">
                 <div id="mobile_bar">
-                    <img id="mobile_caser_icon" src="../assets/Caser2.png" width="50%">
-                    <div id="plus_icon_wrap">
-                        <div class="wrap" @click="open_side_bar">
+                    <div style="display:block; position: relative; width: 100%; height: 100%; ">
+                        <div class="wrap" style="position: absolute; width: 100%;">
                             <div class="inner">
-                                <i id="plus_icon" class="fas fa-calendar-plus"></i>
+                                <img id="mobile_caser_icon" src="../assets/Caser2.png" >
+                            </div>
+                        </div>
+                        <div id="plus_icon_wrap">
+                            <div class="wrap" @click="open_side_bar">
+                                <div class="inner">
+                                    <i id="plus_icon" class="fas fa-calendar-plus"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -329,7 +335,6 @@
         min-height: 630px;
         min-width: 320px;
     }
-
     #input_basic_inform_wrap{
         display: inline-block;
         width: 80%;
@@ -458,7 +463,7 @@
         }
         #mobile_bar{
             position: absolute;
-            display: inline-block;
+            display: block;
             background-color: #353866;
             top: 0;
             left: 0;
@@ -467,12 +472,10 @@
             color: white;
         }
         #mobile_caser_icon{
-            margin-left: 15%;
-            height: 97%;
+            width: 50%;
         }
         #caser_icon{
             display: none;
-
         }
         #plus_icon_wrap{
             display: inline-block;

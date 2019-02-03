@@ -452,6 +452,7 @@
         #input_inform_wrap{
             position: relative;
             width: 100vw;
+            margin-top: 0;
         }
         .wrap{
             display: table;
@@ -480,7 +481,7 @@
             color: white;
         }
         #mobile_caser_icon{
-            width: 50%;
+            width: 40%;
         }
         #caser_icon{
             display: none;

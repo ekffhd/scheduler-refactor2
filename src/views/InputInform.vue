@@ -288,9 +288,9 @@
         height: 100%;
     }
     .inner{
-        display: table-cell;
+        display: block;
         width: 100%;
-        height: 100%;
+        height: 98vh;
         vertical-align: middle;
     }
     #input_inform_wrap{

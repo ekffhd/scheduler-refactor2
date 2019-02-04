@@ -1,5 +1,5 @@
 <template>
-    <div style="display: inline-block; height: 98vh; width :100vw;">
+    <div style="display: inline-block; position: absolute; top: 0; left: 0;height: 98vh; width :100vw;">
         <div id="input_inform_wrap">
             <div id="mobile_bar">
                 <div style="display:block; position: relative; width: 100%; height: 100%; ">

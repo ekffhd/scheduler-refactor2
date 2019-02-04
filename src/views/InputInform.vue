@@ -52,7 +52,7 @@
                     <option-added-lecture-list v-show="pin === false"></option-added-lecture-list>
                 </div>
             </div>
-            <div id="mobile_option_select_wrap">
+            <div id="mobile_option_select_wrap" class="background">
                 <div style="display: inline-block; position: relative; width: 100%; height: 100%;">
                     <div id="mobile_break_time_title" style="background-color : #353866; color: white" @click="toggle_break_time_tab">
                         <div class="wrap">
@@ -71,7 +71,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="mobile_lecture_layout_wrap">
+                    <div id="mobile_lecture_layout_wrap" >
                         <div id="mobile_lecture_type_button_wrap">
                             <button :class="[isActive ? 'active':'un_active']" @click="turn_to_pin">고정 강의</button>
                             <button :class="[isActive ? 'un_active':'active']" @click="turn_to_option"

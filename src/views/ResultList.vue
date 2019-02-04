@@ -15,11 +15,11 @@
             </div>
         </div>
         <div id="mobile_move_button">
-            <div class="move_button" @click="move_left">
-                <
+            <div class="move_button" @click="move_left" style="float: left;">
+                <i class="fas fa-chevron-left"></i>
             </div>
-            <div class="move_button" @click="move_right">
-                >
+            <div class="move_button" @click="move_right" style="float: right;">
+                <i class="fas fa-chevron-right"></i>
             </div>
         </div>
     </div>
@@ -128,18 +128,25 @@
         }
         #mobile_move_button{
             display: inline-block;
-            margin-top: 90vh;
+            margin-top: 93vh;
             width: 100vw;
-            height: 10vh;
-            background-color: pink;
+            height: 7vh;
+            background-color: #353866;
         }
         .move_button{
             display: inline-block;
             position: relative;
-            height: 10vh;
+            height: 7vh;
             width: 40vw;
             border: 1px solid;
             z-index: 900;
+        }
+        .move_button>i{
+            display: block;
+            color: white;
+            margin-top: 1vh;
+            font-size: 5vh;
+            margin-bottom: 1vh;
         }
 
     }

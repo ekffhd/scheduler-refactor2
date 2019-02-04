@@ -2,7 +2,7 @@
     <div id="mobile_pin_search_lecture_wrap">
         <div id="mobile_pin_search_input_form_wrap">
             <form v-on:submit.prevent="mobile_search_pin_lecture()">
-                <input id="search_input" placeholder="과목명/교수님성함/학과" v-model="search_param" type="text" class="search_input"/>
+                <input autocomplete="off" id="search_input" placeholder="과목명/교수님성함/학과" v-model="search_param" type="text" class="search_input"/>
                 <i id="search_icon" class="fas fa-search"></i>
                 <!--
                 <transition  name="fade" id="fade">

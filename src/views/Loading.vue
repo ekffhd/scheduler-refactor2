@@ -20,7 +20,16 @@
 
 <script>
     export default {
-        name: "Loading"
+        name: "Loading",
+        mounted(){
+            const check = setInterval(()=>{
+                console.log('hi');
+                if (this.$store.state.TimeTable.result_data.length > 0){
+                    console.log(this.$store.state.TimeTable.result_data);
+                    clearInterval(check);
+                }
+            }, 500);
+        }
     }
 </script>
 

@@ -22,7 +22,7 @@
                     <img src="../assets/Caser.png" id="caser_icon" width="30%" style="margin-bottom: 5%; margin-left: 8%">
                     <scheduler id="scheduler"></scheduler>
                     <div id="submit_button_wrap">
-                        <button id="submit_button">SUBMIT</button>
+                        <button @click="submit()" id="submit_button">SUBMIT</button>
                     </div>
                 </div>
             </div>
@@ -126,6 +126,7 @@
     import MobileOptionAddedLectureList from '../components/InputInform/MobileOption/MobileOptionAddedLectureList'
     import MobilePinSearchLecture from '../components/InputInform/MobilePin/MobilePinSearchLecture'
     import MobilePinAddedLectureList from '../components/InputInform/MobilePin/MobilePinAddedLectureList'
+    import axios from 'axios'
 
     export default {
         name: "InputInform",
@@ -158,6 +159,66 @@
             turn_to_option(){
                 this.isActive = false;
                 this.pin = false;
+            },
+            submit(){
+                const pin_lecture_data = this.$store.state.InputData.pin_lectures;
+                const option_lecture_data = this.$store.state.InputData.option_lectures;
+                const break_time_data = this.$store.state.InputData.break_time;
+
+                if (break_time_data.length === 0){
+                    alert('공강시간을 최소 한개 이상 선택해야 합니다.');
+                    return;
+                }
+
+                let timetable = "";
+
+                for (let i=0; i<break_time_data.length; i++){
+                    let day = break_time_data[i].day;
+                    let start = break_time_data[i].start_time.replace(':', "");
+                    let end = break_time_data[i].end_time.replace(':', "");
+
+                    if (day === "" || start === "" || end === ""){
+                        continue;
+                    }
+                    if (i >= 1){
+                        timetable += ',';
+                    }
+                    if (break_time_data[i].day === 'all'){
+                        timetable += start + ':' +end;
+                    }
+                    else {
+                        timetable += day + ':' + start + ':' + end;
+                    }
+                }
+
+                let fixed = "";
+
+                for (let i=0; i<pin_lecture_data.length; i++){
+                    if (i >= 1) {
+                        fixed += ',';
+                    }
+                    fixed += pin_lecture_data[i].id;
+                }
+
+                let selected = "";
+
+                for (let i=0; i<option_lecture_data.length; i++){
+                    if (i >= 1){
+                        selected += ',';
+                    }
+                    selected += option_lecture_data[i].code;
+                }
+
+                const submit_data = {
+                    'timetable' : timetable,
+                    'fixed' : fixed,
+                    'selected': selected
+                };
+
+                this.$store.dispatch('SUBMIT', submit_data);
+
+                this.$router.push('/loading');
+
             },
             open_side_bar(){
                 document.getElementById("mobile_option_select_wrap").style.left = "0%";

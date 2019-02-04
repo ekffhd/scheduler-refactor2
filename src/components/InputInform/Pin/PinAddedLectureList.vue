@@ -23,6 +23,7 @@
             this.$bus.$on('add_pin_lecture', this.add_pin_lecture);
         },
         methods:{
+
             add_pin_lecture(){
                 this.added_lectures=this.$store.getters.GET_PIN_LECTURES;
             },

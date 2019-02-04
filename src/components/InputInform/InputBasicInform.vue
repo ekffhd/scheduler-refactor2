@@ -81,14 +81,14 @@
                     "20:30",
                     "21:00",
                 ],
-                break_time_data: [],
+                break_time_data: this.$store.state.InputData.break_time,
                 break_time_count: 1,
             }
         },
         methods:{
             add_break_time(){
                 this.break_time_count++;
-                this.break_time_data.push({day: "", start_time: "", end_time: ""});
+                this.$store.state.InputData.break_time.push({day: "", start_time: "", end_time: ""});
                 //store
             },
             sub_break_time(index){

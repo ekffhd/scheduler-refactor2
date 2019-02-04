@@ -235,7 +235,6 @@
                 return margin;
             },//calculate_top_margin
             calculate_lecture_height(start_time, end_time){
-                console.log(start_time, end_time)
                 let end = parseFloat(end_time[0]+end_time[1]) - 9;
                 if(end_time[3] !== '0'){
                     end += 0.5;//6
@@ -244,7 +243,6 @@
                 if(start_time[3] !== '0'){
                     start += 0.5;//4.5
                 }
-                console.log(end, start, end-start);
 
                 let lecture_height = (end - start);
                 return lecture_height* (100/12.0);

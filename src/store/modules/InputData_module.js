@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 const ADD_PIN_LECTURE = 'ADD_PIN_LECTURE';
 const ADD_OPTION_LECTURE = 'ADD_OPTION_LECTURE';
 const SUB_PIN_LECTURE = 'SUB_PIN_LECTURE';
@@ -6,6 +8,7 @@ const SUB_OPTION_LECTURE = 'SUB_OPTION_LECTURE';
 const state ={
     pin_lectures: [],
     option_lectures: [],
+    break_time: []
 };
 
 const mutations = {

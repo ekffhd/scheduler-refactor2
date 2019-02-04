@@ -26,9 +26,13 @@
                 this.added_lectures=this.$store.getters.GET_PIN_LECTURES;
             },
             sub_pin_lecture(lecture){
-                this.$store.dispatch('SUB_PIN_LECTURE', lecture);
-                this.$bus.$emit('sub_pin_lecture',lecture);
-                this.added_lectures=this.$store.getters.GET_PIN_LECTURES;
+                const select = confirm(lecture.professor+' 교수님의 '+lecture.title+' 을(를) 고정강의에서 삭제하겠습니까?');
+                if (select === true){
+                    this.$store.dispatch('SUB_PIN_LECTURE', lecture);
+                    this.$bus.$emit('sub_pin_lecture',lecture);
+                    this.added_lectures=this.$store.getters.GET_PIN_LECTURES;
+                }
+
             }
         }
     }

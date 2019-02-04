@@ -1,16 +1,9 @@
 <template>
-    <div id="option_added_lecture_data_wrap" @mouseenter="show = true" @mouseleave="show = false">
+    <div id="mobile_option_added_lecture_data_wrap" @mouseenter="show = true" @mouseleave="show = false">
         <div id="lecture_data">
             <div id="lecture_title"> <div class="wrap" style="margin-top: 5%; height: 95%;"><div class="inner">{{lecture.title}}</div></div> </div>
             <div id="lecture_info">
                 {{lecture.code}} {{lecture.point}}학점
-            </div>
-        </div>
-        <div id="minus_hover_wrap" v-show="show===true">
-            <div class="wrap">
-                <div class="inner">
-                    <i id="minus_icon" class="fas white fa-times" ></i>
-                </div>
             </div>
         </div>
     </div>
@@ -33,7 +26,7 @@
         margin: 0;
         padding: 0;
     }
-    #option_added_lecture_data_wrap{
+    #mobile_option_added_lecture_data_wrap{
         position: relative;
         width: calc(100% - 30px);
         height: 100%;

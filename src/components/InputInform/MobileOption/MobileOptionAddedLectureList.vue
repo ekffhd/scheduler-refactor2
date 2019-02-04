@@ -9,7 +9,7 @@
 <script>
     import OptionLectureData from './MobileOptionAddedLectureData'
     export default {
-        name: "OptionAddedLectureList",
+        name: "MobileOptionAddedLectureList",
         components:{
             'option-lecture-data': OptionLectureData
         },
@@ -26,9 +26,14 @@
                 this.added_lectures=this.$store.getters.GET_OPTION_LECTURES;
             },
             sub_option_lecture(lecture){
-                this.$store.dispatch('SUB_OPTION_LECTURE', lecture);
-                this.$bus.$emit('sub_option_lecture',lecture);
-                this.added_lectures=this.$store.getters.GET_OPTION_LECTURES;
+                const select = confirm(lecture.title+' 을(를) 선택강의에서 삭제하겠습니까?');
+                if (select === true){
+                    this.$store.dispatch('SUB_OPTION_LECTURE', lecture);
+                    this.$bus.$emit('sub_option_lecture',lecture);
+                    this.added_lectures=this.$store.getters.GET_OPTION_LECTURES;
+                }
+
+
             }
         }
     }

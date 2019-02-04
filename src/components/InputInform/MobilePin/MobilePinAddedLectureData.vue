@@ -16,13 +16,6 @@
 
             </div>
         </div>
-        <div id="minus_hover_wrap" v-show="show===true">
-            <div class="wrap">
-                <div class="inner">
-                    <i id="minus_icon" class="fas white fa-times" ></i>
-                </div>
-            </div>
-        </div>
     </div>
 </template>
 

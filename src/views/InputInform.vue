@@ -325,6 +325,7 @@
         padding-right: 6%;
         display: table-cell;
         vertical-align: middle;
+        height: 100%;
     }
     #submit_button_wrap{
         display: inline-block;
@@ -453,6 +454,7 @@
             position: relative;
             width: 100vw;
             margin-top: 0;
+            height: 100%;
         }
         .wrap{
             display: table;

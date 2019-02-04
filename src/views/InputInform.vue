@@ -126,7 +126,6 @@
     import MobileOptionAddedLectureList from '../components/InputInform/MobileOption/MobileOptionAddedLectureList'
     import MobilePinSearchLecture from '../components/InputInform/MobilePin/MobilePinSearchLecture'
     import MobilePinAddedLectureList from '../components/InputInform/MobilePin/MobilePinAddedLectureList'
-    import axios from 'axios'
 
     export default {
         name: "InputInform",

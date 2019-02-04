@@ -2,8 +2,10 @@
     <div id="result">
         <div id="scheduler_data_wrap" :style="{width: 'calc((30vw + 10px) * 10)', 'min-width': 370*10+10+'px'}">
             <div id="scheduler_data" v-for="i in 10">
-                        {{i}}
-                <scheduler style="height: 100%;"></scheduler>
+                <div id="remove_button">
+                    <i class="fas fa-times"></i>
+                </div>
+                <scheduler style="height: 60vh;"></scheduler>
             </div>
         </div>
 
@@ -76,11 +78,16 @@
         display:block;
         width: 30vw;
         min-width: 360px;
-        height: 60vh;
+        height: 65vh;
         min-height: 420px;
         float: left;
         margin-top: 20vh;
         margin-left: 10px;
+    }
+    #remove_button{
+        display: inline-block;
+        font-size: 5vh;
+        float: right;
     }
     #mobile_scheduler_data_wrap{
         display: none;
@@ -88,6 +95,7 @@
     #mobile_move_button{
         display: none;
     }
+
     @media ( max-width: 769px) {
         #result{
             position: relative;

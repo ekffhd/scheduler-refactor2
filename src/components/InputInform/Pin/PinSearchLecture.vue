@@ -15,29 +15,29 @@
         </div>
         <div id="pin_search_lecture_list">
             <div id="lecture_data" v-for="(lecture, index) in search_data" @click="add_pin_lecture(lecture)" :key="index">
-                    <div id="lecture_title">
-                        <div class="wrap">
-                            <div class="inner">
-                                {{lecture.title}}
-                            </div>
+                <div id="lecture_title">
+                    <div class="wrap">
+                        <div class="inner">
+                            {{lecture.title}}
                         </div>
-                         </div>
+                    </div>
+                </div>
+                <div class="lecture_info">
+                    {{lecture.professor}} {{lecture.division}}반 {{lecture.classroom}}
+                </div>
 
-                    <div class="lecture_info">
-                        {{lecture.department}} {{lecture.code}} {{lecture.point}}학점
-                    </div>
-                    <div class="lecture_info">
-                        {{lecture.division}}반 {{lecture.professor}} {{lecture.classroom}}
-                    </div>
-                    <div id="lecture_time_wrap">
-                        <div class="wrap">
-                            <div class="inner" style="text-align: center;">
-                                <div id="lecture_time" v-for="(time, index) in lecture.timetable" :key="index">
-                                    {{time.day}} {{time.start.split(":")[0]+":"+time.start.split(":")[1]}}~{{time.end.split(":")[0]+":"+time.end.split(":")[1]}}
-                                </div>
+                <div class="lecture_info">
+                {{lecture.department}} {{lecture.code}} {{lecture.point}}학점
+                </div>
+                <div id="lecture_time_wrap">
+                    <div class="wrap">
+                        <div class="inner" style="text-align: center;">
+                            <div id="lecture_time" v-for="(time, index) in lecture.timetable" :key="index">
+                                {{time.day}} {{time.start.split(":")[0]+":"+time.start.split(":")[1]}}~{{time.end.split(":")[0]+":"+time.end.split(":")[1]}}
                             </div>
                         </div>
                     </div>
+                </div>
                 </div>
         </div>
     </div>
@@ -166,7 +166,7 @@
         display: inline-block;
         float: left;
         width: 67%;
-        height: 40px;
+        height: 30px;
         font-size: 12px;
         text-align: left;
         font-weight: bold;
@@ -186,7 +186,7 @@
         display: inline-block;
         float: left;
         width: 67%;
-        height: 15px;
+        height: auto;
         font-size: 11px;
         text-align: left;
     }

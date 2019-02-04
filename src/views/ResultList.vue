@@ -14,7 +14,7 @@
                 <div id="mobile_remove_button">
                     <i class="fas fa-times"></i>
                 </div>
-                <scheduler :schedule="schedule" style="height: 65vh;"></scheduler>
+                <scheduler :schedule="schedule" style="height: 70vh;"></scheduler>
             </div>
         </div>
         <div id="mobile_move_button">
@@ -146,7 +146,7 @@
             margin-right: 5vw;
             min-width: 90vw;
             margin-top: 7vh;
-            height: 70vh;
+            height: 75vh;
             margin-left: 0;
             min-height: 420px;
             float: left;

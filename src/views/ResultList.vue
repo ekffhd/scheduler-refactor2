@@ -1,12 +1,12 @@
 <template>
     <div id="result">
-        <div v-id="schedules" id="scheduler_data_wrap" :style="{width: 'calc((30vw + 10px) * 10)', 'min-width': 370*10+10+'px'}">
+        <div v-id="schedules" id="scheduler_data_wrap" :style="{width: 'calc((30vw + 10px) * '+length+')', 'min-width': 370*length+10+'px'}">
             <div id="scheduler_data" v-for="schedule in schedules">
                 <scheduler :schedule="schedule" style="height: 100%;"></scheduler>
             </div>
         </div>
 
-        <div v-if="schedules" id="mobile_scheduler_data_wrap" :style="{width: 'calc(100vw * 10)', 'min-width': 370*10+10+'px'}">
+        <div v-if="schedules" id="mobile_scheduler_data_wrap" :style="{width: 'calc(100vw * '+length+')', 'min-width': 370*length+10+'px'}">
             <div id="mobile_scheduler_data" v-for="schedule in schedules">
                 <div>
                     x
@@ -36,17 +36,17 @@
             return{
                 left: 0,
                 right: 0,
-                schedules: []
+                schedules: [],
+                length: 0,
             }
         },
         mounted(){
-            console.log(this.schedules);
             this.schedules = this.$store.getters.GET_RESULT;
+            this.length = this.schedules.length;
             console.log(this.schedules);
         },
         methods:{
             move_left(){
-                console.log('hi');
                 document.getElementById("mobile_scheduler_data_wrap").style.left = this.left + 100 + 'vw';
                 this.left+=100;
             },

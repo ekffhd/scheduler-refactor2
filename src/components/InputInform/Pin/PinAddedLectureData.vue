@@ -53,6 +53,7 @@
         padding-left: 15px;
         padding-right: 15px;
         cursor: pointer;
+        color: #566270;
     }
     #lecture_data{
         display: inline-block;

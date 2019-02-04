@@ -4,7 +4,7 @@ module.exports = {
       registry: undefined,
       awsProfile: 'default',
       region: 'ap-northeast-2',
-      bucket: 'caser.com',
+      bucket: 'timetable-caser',
       createBucket: true,
       staticHosting: true,
       staticIndexPage: 'index.html',

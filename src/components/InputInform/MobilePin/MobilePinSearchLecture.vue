@@ -63,9 +63,12 @@
                     });
             },
             add_mobile_pin_lecture(lecture){
-                this.$store.dispatch('ADD_PIN_LECTURE', lecture);
-                if(lecture.out.status === "succeed"){
-                    this.$bus.$emit('add_pin_lecture',lecture);
+                const select = confirm(lecture.professor+' 교수님의 '+lecture.title+' 을(를) 고정강의로 추가하겠습니까?');
+                if (select === true){
+                    this.$store.dispatch('ADD_PIN_LECTURE', lecture);
+                    if(lecture.out.status === "succeed"){
+                        this.$bus.$emit('add_pin_lecture',lecture);
+                    }
                 }
             }
         },

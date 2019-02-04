@@ -53,9 +53,12 @@
                     })
             },
             add_option_lecture(lecture){
-                this.$store.dispatch('ADD_OPTION_LECTURE', lecture);
-                if(lecture.out.status === "succeed"){
-                    this.$bus.$emit('add_option_lecture',lecture);
+                const select = confirm(lecture.title+' 을(를) 선택 강의로 추가하겠습니까?');
+                if (select === true){
+                    this.$store.dispatch('ADD_OPTION_LECTURE', lecture);
+                    if(lecture.out.status === "succeed"){
+                        this.$bus.$emit('add_option_lecture',lecture);
+                    }
                 }
             }
         },

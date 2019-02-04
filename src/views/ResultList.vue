@@ -1,18 +1,20 @@
 <template>
     <div id="result">
         <div id="scheduler_data_wrap" :style="{width: 'calc((30vw + 10px) * '+length+')', 'min-width': 370*length+10+'px'}">
-            <div id="scheduler_data" v-for="schedule in schedules">
+            <div id="scheduler_data" v-for="(schedule, index) in schedules" :key="schedule.id">
+                <div style="margin-left: 5%">{{index + 1}} / {{schedules.length}}개의 시간표 중</div>
                 <div id="remove_button">
-                    <i class="fas fa-times"></i>
+                    <i @click="remove_lecture(schedule.id)" class="fas fa-times"></i>
                 </div>
                 <scheduler :schedule="schedule" style="height: 60vh;"></scheduler>
             </div>
         </div>
 
         <div v-if="schedules" id="mobile_scheduler_data_wrap" :style="{width: 'calc(100vw * '+length+')', 'min-width': 370*length+10+'px'}">
-            <div id="mobile_scheduler_data" v-for="schedule in schedules">
+            <div id="mobile_scheduler_data" v-for="(schedule, index) in schedules" :key="schedule.id">
+                <div style="margin-left: 9%;">{{index + 1}} / {{schedules.length}}개의 시간표 중</div>
                 <div id="mobile_remove_button">
-                    <i class="fas fa-times"></i>
+                    <i @click="remove_lecture(schedule.id)" class="fas fa-times"></i>
                 </div>
                 <scheduler :schedule="schedule" style="height: 70vh;"></scheduler>
             </div>
@@ -46,7 +48,9 @@
         mounted(){
             this.schedules = this.$store.getters.GET_RESULT;
             this.length = this.schedules.length;
-            console.log(this.schedules);
+            for(let i=0; i<this.length; i++){
+                this.schedules[i].id = i;
+            }
         },
         methods:{
             move_left(){
@@ -70,6 +74,11 @@
                     }
                 }
 
+            },
+            remove_lecture(index){
+                this.schedules = this.schedules.filter((schedule)=>{
+                    return schedule.id != index;
+                })
             }
         }
     }

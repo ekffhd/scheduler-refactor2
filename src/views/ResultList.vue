@@ -1,15 +1,15 @@
 <template>
     <div id="result">
-        <div id="scheduler_data_wrap" :style="{width: 350+'vw'}">
+        <div id="scheduler_data_wrap" :style="{width: 'calc((30vw + 10px) * 10)', 'min-width': 370*10+10+'px'}">
             <div id="scheduler_data" v-for="i in 10">
-                <scheduler style="height: 80%;"></scheduler>
+                <scheduler style="height: 100%;"></scheduler>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    import Scheduler from '../components/InputInform/Scheduler'
+    import Scheduler from '../components/Result/ResultScheduler'
     export default {
         name: "ResultList",
         components:{
@@ -33,16 +33,17 @@
         overflow-x: scroll;
         -ms-overflow-x: scroll;
         display: inline-block;
-        width: 1080vh;
         height: 98vh;
+        min-height: 676px;
     }
     #scheduler_data{
-        display: inline-block;
-        width: auto;
-        margin: 0 auto;
-        height: 80vh;
+        display:block;
+        width: 30vw;
+        min-width: 360px;
+        height: 60vh;
+        min-height: 420px;
         float: left;
+        margin-top: 20vh;
+        margin-left: 10px;
     }
-
-
 </style>

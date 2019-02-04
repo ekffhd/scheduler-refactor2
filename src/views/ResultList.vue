@@ -1,20 +1,17 @@
 <template>
     <div id="result">
-        <div id="scheduler_data_wrap" :style="{width: 'calc((30vw + 10px) * 10)', 'min-width': 370*10+10+'px'}">
-            <div id="scheduler_data" v-for="i in 10">
-                <div>
-                    {{i}}
-                </div>
-                <scheduler style="height: 100%;"></scheduler>
+        <div v-id="schedules" id="scheduler_data_wrap" :style="{width: 'calc((30vw + 10px) * 10)', 'min-width': 370*10+10+'px'}">
+            <div id="scheduler_data" v-for="schedule in schedules">
+                <scheduler :schedule="schedule" style="height: 100%;"></scheduler>
             </div>
         </div>
 
-        <div id="mobile_scheduler_data_wrap" :style="{width: 'calc(100vw * 10)', 'min-width': 370*10+10+'px'}">
-            <div id="mobile_scheduler_data" v-for="i in 10">
+        <div v-if="schedules" id="mobile_scheduler_data_wrap" :style="{width: 'calc(100vw * 10)', 'min-width': 370*10+10+'px'}">
+            <div id="mobile_scheduler_data" v-for="schedule in schedules">
                 <div>
                     x
                 </div>
-                <scheduler style="height: 100%;"></scheduler>
+                <scheduler :schedule="schedule" style="height: 100%;"></scheduler>
             </div>
         </div>
         <div id="mobile_move_button">
@@ -39,7 +36,13 @@
             return{
                 left: 0,
                 right: 0,
+                schedules: []
             }
+        },
+        mounted(){
+            console.log(this.schedules);
+            this.schedules = this.$store.getters.GET_RESULT;
+            console.log(this.schedules);
         },
         methods:{
             move_left(){

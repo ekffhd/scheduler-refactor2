@@ -22,7 +22,9 @@ const actions ={
 };
 
 const getters = {
-
+    GET_RESULT: (state) => {
+        return state.result_data;
+    }
 };
 
 export default{

@@ -72,7 +72,7 @@
                         </div>
                     </div>
                     <div id="mobile_lecture_layout_wrap" >
-                        <div id="mobile_lecture_type_button_wrap">
+                        <div class="mobile_lecture_type_button_wrap">
                             <button :class="[isActive ? 'active':'un_active']" @click="turn_to_pin">고정 강의</button>
                             <button :class="[isActive ? 'un_active':'active']" @click="turn_to_option"
                                     style="margin-left: 5px;">선택 강의</button>
@@ -94,31 +94,20 @@
                         <div class="wrap">
                             <div class="inner">
                                 추가된 강의 목록
-
                             </div>
                         </div>
                     </div>
-                    <div id="mobile_added_lecture_list_wrap" >
-
-                    </div>
-                    <!--
-                    <div id="mobile_lecture_type_button_wrap">
-                        <button :class="[isActive ? 'active':'un_active']" @click="turn_to_pin">고정 강의</button>
-                        <button :class="[isActive ? 'un_active':'active']" @click="turn_to_option"
-                                style="margin-left: 5px;">선택 강의</button>
-                        <div class="mobile_option_description" v-if="isActive">
-                            OOO교수님의 △△수업은 꼭들어야해!<br>
-                            반드시 들어야하는 특정 강의를 선택해주세요.
+                    <div id="mobile_added_lecture_list_wrap">
+                        <div class="mobile_lecture_type_button_wrap" style="height: 5%;">
+                            <button :class="[isActive ? 'active':'un_active']" @click="turn_to_pin">고정 강의</button>
+                            <button :class="[isActive ? 'un_active':'active']" @click="turn_to_option"
+                                    style="margin-left: 5px;">선택 강의</button>
                         </div>
-                        <div class="mobile_option_description" v-else>
-                            △△ 수업을 듣고싶은데, 시간과 교수님은 상관없어!<br>
-                            가능한 경우의 수를 알고싶은 강의를 선택해주세요.
+                        <div id="mobile_added_lecture_list">
+                            <mobile-pin-added-lecture-list v-show="pin === true"></mobile-pin-added-lecture-list>
+                            <mobile-option-added-lecture-list v-show="pin===false"></mobile-option-added-lecture-list>
                         </div>
                     </div>
-                    <div id="mobile_lecture_layout_wrap">
-                        <mobile-option-search-lecture></mobile-option-search-lecture>
-                    </div>
-                    -->
                 </div>
             </div>
         </div>
@@ -134,7 +123,9 @@
     import OptionLectureLayout from '../components/InputInform/Option/OptionLectureLayout'
     import OptionAddedLectureList from '../components/InputInform/Option/OptionAddedLectureList'
     import MobileOptionSearchLecture from '../components/InputInform/MobileOption/MobileOptionSearchLecture'
+    import MobileOptionAddedLectureList from '../components/InputInform/MobileOption/MobileOptionAddedLectureList'
     import MobilePinSearchLecture from '../components/InputInform/MobilePin/MobilePinSearchLecture'
+    import MobilePinAddedLectureList from '../components/InputInform/MobilePin/MobilePinAddedLectureList'
 
     export default {
         name: "InputInform",
@@ -147,7 +138,9 @@
             'option-added-lecture-list': OptionAddedLectureList,
             'mobile-input-basic-inform': MobileInputBasicInform,
             'mobile-option-search-lecture': MobileOptionSearchLecture,
+            'mobile-option-added-lecture-list': MobileOptionAddedLectureList,
             'mobile-pin-search-lecture': MobilePinSearchLecture,
+            'mobile-pin-added-lecture-list': MobilePinAddedLectureList,
         },
         data(){
             return{
@@ -573,14 +566,14 @@
             overflow: hidden;
             background-color: #edf0f9;
         }
-        #mobile_lecture_type_button_wrap{
+        .mobile_lecture_type_button_wrap{
             display: inline-block;
             padding-top: 2%;
             padding-left: 5%;
-            width: 100%;
+            width: 95%;
             height: 14%;
         }
-        #mobile_lecture_type_button_wrap > button{
+        .mobile_lecture_type_button_wrap > button{
             width: 20%;
             border: none;
             height: 25px;
@@ -640,7 +633,7 @@
             width: 100%;
             height: 5%;
             background-color: #edf0f9;
-            top: 10%;
+            top: -100%;
             left: 0;
             transition: .7s;
             backface-visibility: hidden;
@@ -660,7 +653,11 @@
             border-top: 1px solid white;
             font-weight: bold;
             font-size: 14px;
-
+        }
+        #mobile_added_lecture_list{
+            display: block;
+            height: 90%;
+            overflow-y: scroll;
         }
 
     }

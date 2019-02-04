@@ -135,13 +135,12 @@
         overflow-x: hidden;
         -webkit-overflow-scrolling: touch;
     }
-
     #lecture_data{
         position: relative;
         display:block;
         border-bottom: 1px solid #aaabd3;
         width: 100%;
-        height: 18%;
+        height: 90px;
         cursor: pointer;
     }
     #lecture_title{

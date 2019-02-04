@@ -84,6 +84,9 @@
         margin-top: 20vh;
         margin-left: 10px;
     }
+    #mobile_scheduler_data_wrap{
+        display: none;
+    }
     #mobile_move_button{
         display: none;
     }

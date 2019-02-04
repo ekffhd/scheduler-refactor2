@@ -289,6 +289,7 @@
         padding: 0;
     }
     #scheduler_wrap{
+        max-width: 400px;
         width: 100%;
         height: 100%;
     }

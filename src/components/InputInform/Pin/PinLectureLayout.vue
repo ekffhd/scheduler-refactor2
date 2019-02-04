@@ -6,9 +6,10 @@
                     <i class="fas fa-search" style="height: 50%;"></i>
                 </div>
             </div>
-            <div class="tab" :class="[isActive? 'un_active': 'active']" @click="isActive=false">
+            <div class="tab" :class="[isActive? 'un_active': 'active']">
                 <div class="icon_wrap">
-                    <i class="fas fa-bars"></i>
+                    &nbsp;
+                    <!--<i class="fas fa-bars"></i>-->
                 </div>
             </div>
             <div id="blank_tab"></div>
@@ -109,18 +110,18 @@
     }
 
     .un_active{
-        cursor: pointer;
         border-bottom: 1px solid #353866;
         border-top: 1px solid #f8f8f8;
         border-right: 1px solid #f8f8f8;
         border-left: 1px solid #f8f8f8;
         color: #aaabd3;
     }
+    /*
     .un_active:hover{
         background-color: rgba(170, 171, 211, 0.2);
         border-radius: 10px 10px 0 0;
         color: #353866;
-    }
+    }*/
 
     .icon_wrap{
         height: 100%;

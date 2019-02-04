@@ -57,7 +57,7 @@
         border-radius: 10px;
         width: calc(80% + 30px);
         background-color: white;
-        height: 40%;
+        height: 80px;
     }
 
 </style>

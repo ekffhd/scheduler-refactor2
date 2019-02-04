@@ -3,7 +3,7 @@
         <div id="option_search_input_form_wrap">
             <form v-on:submit.prevent="mobile_search_option_lecture()">
                 <input autocomplete="off" id="search_input" v-model="search_param" placeholder="과목명/교수님성함/학과" type="text" class="search_input"/>
-                <i id="search_icon" class="fas fa-search"></i>
+                <i id="search_icon" class="fas fa-search" @click="mobile_search_option_lecture()"></i>
                 <!--
                 <transition  name="fade" id="fade">
                     <div class="loading" v-show="loading">

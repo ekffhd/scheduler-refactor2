@@ -3,7 +3,7 @@
         <div id="option_search_input_form_wrap">
             <form v-on:submit.prevent="search_option_lecture()">
                 <input autocomplete="off" id="search_input" placeholder="과목명/교수님성함/학과" v-model="search_param" type="text" class="search_input"/>
-                <i id="search_icon" class="fas fa-search"></i>
+                <i id="search_icon" class="fas fa-search" @click="search_option_lecture"></i>
                 <!--
                 <transition  name="fade" id="fade">
                     <div class="loading" v-show="loading">
@@ -16,7 +16,7 @@
         <div id="option_search_lecture_list">
             <div id="lecture_data" v-for="(lecture, index) in search_data" @click="add_option_lecture(lecture)" :key="index">
                 <div id="lecture_title"> <div class="wrap" style="margin-top: 5%; height: 95%;"><div class="inner">{{lecture.title}}</div></div> </div>
-                <div id="lecture_info">
+                <div class="lecture_info">
                         {{lecture.code}} {{lecture.point}}학점
                 </div>
 
@@ -113,6 +113,7 @@
         width: 80%;
     }
     #search_icon{
+        cursor: pointer;
         color: #aaabd3;
     }
     #option_search_lecture_list{
@@ -130,7 +131,7 @@
         border: 2px solid #aaabd3;
         border-radius: 10px;
         width: 80%;
-        height: 28%;
+        height: 80px;
         padding-left: 15px;
         padding-right: 15px;
         cursor: pointer;
@@ -144,8 +145,8 @@
         display: inline-block;
         float: left;
         width: 67%;
-        height: 55%;
-        font-size: 13px;
+        height: 40px;
+        font-size: 12px;
         font-weight: bold;
     }
     .wrap{
@@ -158,11 +159,11 @@
         vertical-align: middle;
         text-align: left;
     }
-    #lecture_info{
+    .lecture_info{
         display: inline-block;
         float: left;
         width: 67%;
-        height: 40%;
+        height: 40px;
         font-size: 11px;
         text-align: left;
     }

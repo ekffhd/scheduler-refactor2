@@ -1,9 +1,12 @@
 <template>
     <div id="pin_added_lecture_data_wrap" @mouseenter="show = true" @mouseleave="show = false">
         <div id="lecture_data">
-            <div id="lecture_title"> <div class="wrap" style="margin-top: 5%; height: 95%;"><div class="inner">{{lecture.title}}</div></div> </div>
-            <div id="lecture_info">
-                {{lecture.professor}} &nbsp; {{lecture.classroom}} &nbsp; {{lecture.point}} 학점
+            <div id="lecture_title"> <div class="wrap"><div class="inner">{{lecture.title}}</div></div> </div>
+            <div class="lecture_info">
+                {{lecture.department}} {{lecture.code}} {{lecture.point}}학점
+            </div>
+            <div class="lecture_info">
+                {{lecture.division}}반 {{lecture.professor}} {{lecture.classroom}}
             </div>
             <div id="lecture_time_wrap">
                 <div class="wrap">
@@ -67,8 +70,8 @@
         display: inline-block;
         float: left;
         width: 67%;
-        height: 55%;
-        font-size: 13px;
+        height: 40px;
+        font-size: 12px;
         font-weight: bold;
     }
     .wrap{
@@ -83,11 +86,11 @@
         text-align: left;
         margin: auto;
     }
-    #lecture_info{
+    .lecture_info{
         display: inline-block;
         float: left;
         width: 67%;
-        height: 40%;
+        height: 15px;
         font-size: 11px;
         text-align: left;
     }

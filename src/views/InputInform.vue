@@ -1,9 +1,9 @@
 <template>
-    <div style="display: inline-block; position: absolute; top: 0; left: 0;height: 98vh; width :100vw;">
+    <div style="display: inline-block; position: absolute; top: 0; left: 0;height: 98vh; overflow: scroll; width :100vw;">
         <div id="input_inform_wrap">
             <div id="mobile_bar">
                 <div style="display:block; position: relative; width: 100%; height: 100%; ">
-                    <div class="wrap" style="position: absolute; width: 100%;">
+                    <div class="wrap" style="position: absolute; width: 100%; height: 7vh;">
                         <div class="inner">
                             <img id="mobile_caser_icon" src="../assets/Caser2.png" >
                         </div>
@@ -371,7 +371,7 @@
         /*position: relative;*/
         display: table;
         width: 55%;
-        height: 93vh;
+        height: 100%;
         float: left;
     }
     #scheduler_inner{
@@ -536,7 +536,7 @@
             color: white;
         }
         #mobile_caser_icon{
-            width: 40%;
+            width: 150px;
         }
         #caser_icon{
             display: none;

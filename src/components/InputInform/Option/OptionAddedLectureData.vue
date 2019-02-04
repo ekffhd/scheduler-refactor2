@@ -58,7 +58,7 @@
         display: inline-block;
         float: left;
         width: 67%;
-        height: 55%;
+        height: 40px;
         font-size: 12px;
         font-weight: bold;
     }
@@ -78,7 +78,7 @@
         display: inline-block;
         float: left;
         width: 67%;
-        height: 40%;
+        height: 40px;
         font-size: 11px;
         text-align: left;
     }

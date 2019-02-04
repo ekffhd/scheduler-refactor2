@@ -3,7 +3,7 @@
         <div id="pin_search_input_form_wrap">
             <form v-on:submit.prevent="search_pin_lecture()">
                 <input autocomplete="off" id="search_input" v-model="search_param" placeholder="과목명/교수님성함/학과" type="text" class="search_input"/>
-                <i id="search_icon" class="fas fa-search"></i>
+                <i id="search_icon" class="fas fa-search" @click="search_pin_lecture()"></i>
                 <!--
                 <transition  name="fade" id="fade">
                     <div class="loading" v-show="loading">
@@ -15,9 +15,19 @@
         </div>
         <div id="pin_search_lecture_list">
             <div id="lecture_data" v-for="(lecture, index) in search_data" @click="add_pin_lecture(lecture)" :key="index">
-                    <div id="lecture_title"> <div class="wrap" style="margin-top: 5%; height: 95%;"><div class="inner">{{lecture.title}}</div></div> </div>
-                    <div id="lecture_info">
-                        {{lecture.professor}} &nbsp; {{lecture.classroom}} &nbsp; {{lecture.point}} 학점
+                    <div id="lecture_title">
+                        <div class="wrap">
+                            <div class="inner">
+                                {{lecture.title}}
+                            </div>
+                        </div>
+                         </div>
+
+                    <div class="lecture_info">
+                        {{lecture.department}} {{lecture.code}} {{lecture.point}}학점
+                    </div>
+                    <div class="lecture_info">
+                        {{lecture.division}}반 {{lecture.professor}} {{lecture.classroom}}
                     </div>
                     <div id="lecture_time_wrap">
                         <div class="wrap">
@@ -52,6 +62,7 @@
                 this.notfound = false;
                 axios.get('lectures/search/?search='+this.search_param+'&page='+this.page)
                     .then((response) => {
+                        console.log(response);
                         this.search_data = this.search_data.concat(response.data.results);
                     });
             },
@@ -120,6 +131,7 @@
         width: 80%;
     }
     #search_icon{
+        cursor: pointer;
         color: #aaabd3;
     }
     #pin_search_lecture_list{
@@ -139,7 +151,7 @@
         border: 2px solid #aaabd3;
         border-radius: 10px;
         width: 80%;
-        height: 28%;
+        height: 80px;
         padding-left: 15px;
         padding-right: 15px;
         margin-bottom: 5px;
@@ -154,8 +166,9 @@
         display: inline-block;
         float: left;
         width: 67%;
-        height: 55%;
-        font-size: 13px;
+        height: 40px;
+        font-size: 12px;
+        text-align: left;
         font-weight: bold;
     }
     .wrap{
@@ -169,17 +182,16 @@
         vertical-align: middle;
         text-align: left;
     }
-    #lecture_info{
+    .lecture_info{
         display: inline-block;
         float: left;
         width: 67%;
-        height: 40%;
+        height: 15px;
         font-size: 11px;
         text-align: left;
     }
     #lecture_time_wrap{
         display: inline-block;
-
         width: 30%;
         height: 100%;
         font-size: 11px;

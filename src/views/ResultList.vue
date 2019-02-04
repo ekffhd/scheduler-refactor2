@@ -9,10 +9,10 @@
 
         <div id="mobile_scheduler_data_wrap" :style="{width: 'calc(100vw * 10)', 'min-width': 370*10+10+'px'}">
             <div id="mobile_scheduler_data" v-for="i in 10">
-                <div>
-                    x
+                <div id="mobile_remove_button">
+                    <i class="fas fa-times"></i>
                 </div>
-                <scheduler style="height: 100%;"></scheduler>
+                <scheduler style="height: 65vh;"></scheduler>
             </div>
         </div>
         <div id="mobile_move_button">
@@ -108,18 +108,25 @@
             position: absolute;
             transition: .7s;
             backface-visibility: hidden;
+            border: 1px solid;
             left: 0;
         }
+
         #mobile_scheduler_data{
             display: inline-block;
             width: 95vw;
             margin-right: 5vw;
             min-width: 90vw;
-            margin-top: 5vh;
+            margin-top: 7vh;
             height: 70vh;
             margin-left: 0;
             min-height: 420px;
             float: left;
+        }
+        #mobile_remove_button{
+            display: inline-block;
+            float: right;
+            font-size: 5vh;
         }
         #mobile_move_button{
             display: inline-block;

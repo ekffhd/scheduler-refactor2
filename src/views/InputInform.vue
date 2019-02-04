@@ -311,7 +311,7 @@
         /*position: relative;*/
         display: table;
         width: 55%;
-        height: 100%;
+        height: 93vh;
         float: left;
     }
     #scheduler_inner{
@@ -472,7 +472,7 @@
             top: 0;
             left: 0;
             width: 100vw;
-            height: 7%;
+            height: 7vh;
             color: white;
         }
         #mobile_caser_icon{

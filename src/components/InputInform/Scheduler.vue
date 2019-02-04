@@ -150,7 +150,7 @@
                             <td>
                                 <div class="cols" v-for="(lecture, index) in fri" :key="index">
                                     <div v-for="(timetable, index) in lecture.timetable" :key="index">
-                                        <div v-if="timetable.day === '금'" class="lecture_wrap"  v-bind:style="{top: 'calc('+calculate_top_margin(timetable, '금')+'% + 1px)', height: 'calc('+calculate_lecture_height(timetable.start, timetable.end) + '% - 1px)'}">
+                                        <div v-if="timetable.day === '금'" class="lecture_wrap"  v-bind:style="{width: 'calc(100% + 0.1px)', top: 'calc('+calculate_top_margin(timetable, '금')+'% + 1px)', height: 'calc('+calculate_lecture_height(timetable.start, timetable.end) + '% - 1px)'}">
                                             <div class="lecture_inner">
                                                 <div class="lecture_title">
                                                     {{lecture.title}}

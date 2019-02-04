@@ -79,21 +79,81 @@
                     "20:30",
                     "21:00",
                 ],
-                break_time_data: [],
+                break_time_data: this.$store.state.InputData.break_time,
                 break_time_count: 1,
             }
         },
         methods:{
             add_break_time(){
                 this.break_time_count++;
-                this.break_time_data.push({day: "", start_time: "", end_time: ""});
+                this.$store.state.InputData.break_time.push({day: "", start_time: "", end_time: ""});
                 //store
             },
             sub_break_time(index){
                 this.break_time_count--;
                 this.break_time_data.splice(index, 1);
                 //store
-            }
+            },
+            submit(){
+                const pin_lecture_data = this.$store.state.InputData.pin_lectures;
+                const option_lecture_data = this.$store.state.InputData.option_lectures;
+                const break_time_data = this.$store.state.InputData.break_time;
+
+                if (break_time_data.length === 0){
+                    alert('공강시간을 최소 한개 이상 선택해야 합니다.');
+                    return;
+                }
+
+                let timetable = "";
+
+                for (let i=0; i<break_time_data.length; i++){
+                    let day = break_time_data[i].day;
+                    let start = break_time_data[i].start_time.replace(':', "");
+                    let end = break_time_data[i].end_time.replace(':', "");
+
+                    if (day === "" || start === "" || end === ""){
+                        continue;
+                    }
+                    if (i >= 1){
+                        timetable += ',';
+                    }
+                    if (break_time_data[i].day === 'all'){
+                        timetable += start + ':' +end;
+                    }
+                    else {
+                        timetable += day + ':' + start + ':' + end;
+                    }
+                }
+
+                let fixed = "";
+
+                for (let i=0; i<pin_lecture_data.length; i++){
+                    if (i >= 1) {
+                        fixed += ',';
+                    }
+                    fixed += pin_lecture_data[i].id;
+                }
+
+                let selected = "";
+
+                for (let i=0; i<option_lecture_data.length; i++){
+                    if (i >= 1){
+                        selected += ',';
+                    }
+                    selected += option_lecture_data[i].code;
+                }
+
+                const submit_data = {
+                    'timetable' : timetable,
+                    'fixed' : fixed,
+                    'selected': selected
+                };
+
+                this.$store.dispatch('SUBMIT', submit_data);
+
+                this.$router.push('/loading');
+
+            },
         }
     }
 </script>

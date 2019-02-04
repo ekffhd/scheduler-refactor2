@@ -551,7 +551,7 @@
             display: inline-block;
             width: 90%;
             left: -100%;
-            height: 100%;
+            height: 100vh;
             transition: .7s;
             backface-visibility: hidden;
             z-index: 1000;

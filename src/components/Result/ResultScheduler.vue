@@ -131,14 +131,14 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="grids">
+                                <div class="grids" >
                                     <div class="grid">&nbsp;</div>
                                     <div class="grid">&nbsp;</div>
                                     <div class="grid">&nbsp;</div>
                                     <div class="grid">&nbsp;</div>
                                     <div class="grid">&nbsp;</div>
                                     <div class="grid">&nbsp;</div>
-                                    <div class="grid">&nbsp;</div>
+                                    <div class="grid" >&nbsp;</div>
                                     <div class="grid">&nbsp;</div>
                                     <div class="grid">&nbsp;</div>
                                     <div class="grid">&nbsp;</div>
@@ -310,6 +310,7 @@
         position: absolute;
         display: inline-block;
         height: 100%;
+        overflow: hidden;
         width: 100%;
     }
     .day{

@@ -15,7 +15,7 @@
                 <div style="margin-left: 9%;">{{index + 1}} / {{schedules.length}}개의 시간표 중</div>
                 <div id="mobile_remove_button">
                     <i @click="remove_lecture(schedule.id)" class="fas fa-times"></i>
-                </div>
+                </div>ㅜ
                 <scheduler :schedule="schedule" style="height: 70vh;"></scheduler>
             </div>
         </div>
@@ -78,7 +78,8 @@
             remove_lecture(index){
                 this.schedules = this.schedules.filter((schedule)=>{
                     return schedule.id != index;
-                })
+                });
+                this.length--;
             }
         }
     }

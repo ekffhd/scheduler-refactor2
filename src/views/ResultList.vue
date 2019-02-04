@@ -1,27 +1,27 @@
 <template>
     <div id="result">
         <div id="scheduler_data_wrap" :style="{width: 'calc((30vw + 10px) * '+length+')', 'min-width': 370*length+10+'px'}">
-            <div id="scheduler_data" v-for="i in 10">
+            <div id="scheduler_data" v-for="schedule in schedules">
                 <div id="remove_button">
                     <i class="fas fa-times"></i>
                 </div>
-                <scheduler style="height: 60vh;"></scheduler>
+                <scheduler :schedule="schedule" style="height: 60vh;"></scheduler>
             </div>
         </div>
 
         <div v-if="schedules" id="mobile_scheduler_data_wrap" :style="{width: 'calc(100vw * '+length+')', 'min-width': 370*length+10+'px'}">
-            <div id="mobile_scheduler_data" v-for="i in 10">
+            <div id="mobile_scheduler_data" v-for="schedule in schedules">
                 <div id="mobile_remove_button">
                     <i class="fas fa-times"></i>
                 </div>
-                <scheduler style="height: 65vh;"></scheduler>
+                <scheduler :schedule="schedule" style="height: 65vh;"></scheduler>
             </div>
         </div>
         <div id="mobile_move_button">
-            <div class="move_button" @click="move_left" style="float: left;">
+            <div class="move_button" id="left_button" @click="move_left" style="float: left;">
                 <i class="fas fa-chevron-left"></i>
             </div>
-            <div class="move_button" @click="move_right" style="float: right;">
+            <div class="move_button" id="right_button" @click="move_right" style="float: right;">
                 <i class="fas fa-chevron-right"></i>
             </div>
         </div>
@@ -50,12 +50,26 @@
         },
         methods:{
             move_left(){
-                document.getElementById("mobile_scheduler_data_wrap").style.left = this.left + 100 + 'vw';
-                this.left+=100;
+                if(this.left < 0){
+                    document.getElementById("mobile_scheduler_data_wrap").style.left = this.left + 100 + 'vw';
+                    document.getElementById("right_button").style.display = 'inline-block';
+                    this.left+=100;
+                    if(this.left === 0){
+                        document.getElementById("left_button").style.display= 'none';
+                    }
+                }
             },
             move_right(){
-                document.getElementById("mobile_scheduler_data_wrap").style.left = this.left - 100 + 'vw';
-                this.left-=100;
+                if(this.left > -100 * this.length + 100){
+                    document.getElementById("mobile_scheduler_data_wrap").style.left = this.left - 100 + 'vw';
+                    document.getElementById("left_button").style.display = 'inline-block';
+                    this.left-=100;
+                    if(this.left <= -100 * this.length +100 ){
+                        document.getElementById("right_button").style.display= 'none';
+
+                    }
+                }
+
             }
         }
     }

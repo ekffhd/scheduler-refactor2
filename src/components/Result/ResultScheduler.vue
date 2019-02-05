@@ -33,6 +33,9 @@
                                                     {{lecture.title}}
                                                 </div>
                                                 <div class="lecture_professor">
+                                                    {{lecture.division}}
+                                                </div>
+                                                <div class="lecture_professor">
                                                     {{lecture.professor}}
                                                 </div>
                                             </div>
@@ -62,6 +65,9 @@
                                                 <div class="lecture_inner">
                                                     <div class="lecture_title">
                                                         {{lecture.title}}
+                                                    </div>
+                                                    <div class="lecture_professor">
+                                                        {{lecture.division}}
                                                     </div>
                                                     <div class="lecture_professor">
                                                         {{lecture.professor}}
@@ -95,6 +101,9 @@
                                                     {{lecture.title}}
                                                 </div>
                                                 <div class="lecture_professor">
+                                                    {{lecture.division}}
+                                                </div>
+                                                <div class="lecture_professor">
                                                     {{lecture.professor}}
                                                 </div>
                                             </div>
@@ -123,6 +132,9 @@
                                             <div class="lecture_inner">
                                                 <div class="lecture_title">
                                                     {{lecture.title}}
+                                                </div>
+                                                <div class="lecture_professor">
+                                                    {{lecture.division}}
                                                 </div>
                                                 <div class="lecture_professor">
                                                     {{lecture.professor}}
@@ -154,6 +166,9 @@
                                             <div class="lecture_inner">
                                                 <div class="lecture_title">
                                                     {{lecture.title}}
+                                                </div>
+                                                <div class="lecture_professor">
+                                                    {{lecture.division}}
                                                 </div>
                                                 <div class="lecture_professor">
                                                     {{lecture.professor}}

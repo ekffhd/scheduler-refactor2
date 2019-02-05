@@ -81,7 +81,7 @@
 
             },
             remove_lecture(index){
-                const select = confirm('해당 간표를 삭제하시겠습니까?');
+                const select = confirm('해당 시간표를 삭제하시겠습니까?');
                 if (select === true){
                     this.schedules = this.schedules.filter((schedule)=>{
                         return schedule.id != index;

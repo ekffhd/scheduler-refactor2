@@ -165,7 +165,17 @@
                 const break_time_data = this.$store.state.InputData.break_time;
 
                 if (break_time_data.length === 0){
-                    alert('공강시간을 최소 한개 이상 선택해야 합니다.');
+                    alert('공강시간을 최소 한 개 이상 선택해야 합니다.');
+                    return;
+                }
+
+                if (option_lecture_data.length === 0){
+                    alert('선택강의를 최소 한 개 이상 선택해야 합니다.');
+                    return;
+                }
+
+                if (pin_lecture_data.length === 0){
+                    alert('고정강의를 최소 한 개 이상 선택해야 합니다.');
                     return;
                 }
 

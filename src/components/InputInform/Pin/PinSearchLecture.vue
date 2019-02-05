@@ -62,7 +62,6 @@
                 this.notfound = false;
                 axios.get('lectures/search/?search='+this.search_param+'&page='+this.page)
                     .then((response) => {
-                        console.log(response);
                         this.search_data = this.search_data.concat(response.data.results);
                     });
             },

@@ -2,7 +2,12 @@
     <div id="result">
         <div id="scheduler_data_wrap" :style="{width: 'calc((30vw + 10px) * '+length+')', 'min-width': 370*length+10+'px'}">
             <div id="scheduler_data" v-for="(schedule, index) in schedules" :key="schedule.id">
-                <div style="margin-left: 5%">{{index + 1}} / {{schedules.length}}개의 시간표 중</div>
+                <div class="number_text">
+                    <div class="wrap">
+                        <div class="inner">
+                            {{index + 1}} / {{schedules.length}}</div>
+                        </div>
+                    </div>
                 <div id="remove_button">
                     <i @click="remove_lecture(schedule.id)" class="fas fa-times"></i>
                 </div>
@@ -12,11 +17,11 @@
 
         <div v-if="schedules" id="mobile_scheduler_data_wrap" :style="{width: 'calc(100vw * '+length+')', 'min-width': 370*length+10+'px'}">
             <div id="mobile_scheduler_data" v-for="(schedule, index) in schedules" :key="schedule.id">
-                <div style="margin-left: 9%;">{{index + 1}} / {{schedules.length}}개의 시간표 중</div>
-                <div id="mobile_remove_button">
+                <div class="number_text">{{index + 1}} / {{schedules.length}}</div>
+                <div id="mobile_remove_button" >
                     <i @click="remove_lecture(schedule.id)" class="fas fa-times"></i>
-                </div>ㅜ
-                <scheduler :schedule="schedule" style="height: 70vh;"></scheduler>
+                </div>
+                <scheduler :schedule="schedule" style="display: block;  margin-top: 3vh;height: 65vh;"></scheduler>
             </div>
         </div>
         <div id="mobile_move_button">
@@ -76,10 +81,14 @@
 
             },
             remove_lecture(index){
-                this.schedules = this.schedules.filter((schedule)=>{
-                    return schedule.id != index;
-                });
-                this.length--;
+                const select = confirm('해당 간표를 삭제하시겠습니까?');
+                if (select === true){
+                    this.schedules = this.schedules.filter((schedule)=>{
+                        return schedule.id != index;
+                    });
+                    this.length--;
+                }
+
             }
         }
     }
@@ -102,7 +111,7 @@
         display: inline-block;
         height: 98vh;
         min-height: 676px;
-
+        border: 1px solid;
     }
     #scheduler_data{
         display:block;
@@ -114,9 +123,15 @@
         margin-top: 20vh;
         margin-left: 10px;
     }
+    .number_text{
+        display: inline-block;
+        font-size: 20px;
+        height: 3vh;
+    }
     #remove_button{
         display: inline-block;
-        font-size: 5vh;
+        font-size: 4vh;
+        height: 3vh;
         float: right;
     }
     #mobile_scheduler_data_wrap{
@@ -124,6 +139,17 @@
     }
     #mobile_move_button{
         display: none;
+    }
+    .wrap{
+        display: table;
+        height: 100%;
+        width: 100%;
+
+    }
+    .inner{
+        display: table-cell;
+        vertical-align: middle;
+        text-align: left;
     }
 
     @media ( max-width: 769px) {
@@ -146,25 +172,25 @@
             position: absolute;
             transition: .7s;
             backface-visibility: hidden;
-            border: 1px solid;
             left: 0;
         }
 
         #mobile_scheduler_data{
             display: inline-block;
             width: 95vw;
-            margin-right: 5vw;
+            margin-left: 2vw;
+            margin-right: 3vw;
             min-width: 90vw;
             margin-top: 7vh;
             height: 75vh;
-            margin-left: 0;
             min-height: 420px;
             float: left;
         }
         #mobile_remove_button{
             display: inline-block;
             float: right;
-            font-size: 5vh;
+            font-size: 4vh;
+            height: 5vh;
         }
         #mobile_move_button{
             display: inline-block;

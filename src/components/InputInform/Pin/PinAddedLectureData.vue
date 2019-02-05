@@ -3,10 +3,11 @@
         <div id="lecture_data">
             <div id="lecture_title"> <div class="wrap"><div class="inner">{{lecture.title}}</div></div> </div>
             <div class="lecture_info">
-                {{lecture.department}} {{lecture.code}} {{lecture.point}}학점
+                {{lecture.professor}} {{lecture.division}}반 {{lecture.classroom}}
             </div>
+
             <div class="lecture_info">
-                {{lecture.division}}반 {{lecture.professor}} {{lecture.classroom}}
+                {{lecture.department}} {{lecture.code}} {{lecture.point}}학점
             </div>
             <div id="lecture_time_wrap">
                 <div class="wrap">
@@ -71,7 +72,7 @@
         display: inline-block;
         float: left;
         width: 67%;
-        height: 40px;
+        height: 30px;
         font-size: 12px;
         font-weight: bold;
     }
@@ -91,7 +92,7 @@
         display: inline-block;
         float: left;
         width: 67%;
-        height: 15px;
+        height: auto;
         font-size: 11px;
         text-align: left;
     }

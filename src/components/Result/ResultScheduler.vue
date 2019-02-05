@@ -1,15 +1,15 @@
 <template>
-    <div>
+    <div style="height: 100%;">
         <div id="scheduler_wrap">
             <div class="table_head">
                 <table>
                     <thead>
                         <th>&nbsp;</th>
-                        <td class="day">월</td>
-                        <td class="day">화</td>
-                        <td class="day">수</td>
-                        <td class="day">목</td>
-                        <td class="day">금</td>
+                        <td class="day" style="border-style: none;">월</td>
+                        <td class="day" style="border-style: none;">화</td>
+                        <td class="day" style="border-style: none;">수</td>
+                        <td class="day" style="border-style: none;">목</td>
+                        <td class="day" style="border-style: none;">금</td>
                     </thead>
                 </table>
             </div>
@@ -17,17 +17,17 @@
                 <table>
                     <tbody>
                         <tr>
-                            <th style="width: 10%;">
+                            <th>
                                 <div class="hours">
                                     <div v-for="hour in hours" :key="hour" style="text-align: right;">
                                         {{hour}}
                                     </div>
                                 </div>
                             </th>
-                            <td>
-                                <div class="cols" v-for="(lecture, index) in mon" :key="index">
+                            <td style="position: relative; z-index: 900; width: calc(94% / 5 - 4px); border-radius:  10px 0 0 10px; overflow:hidden; border-top: 1px solid; border-left: 1px solid; border-bottom: 1px solid">
+                            <div class="cols" v-for="(lecture, index) in mon" :key="index">
                                     <div v-for="(timetable, index) in lecture.timetable" :key="index">
-                                        <div v-if="timetable.day === '월' " class="lecture_wrap"  v-bind:style="{top: 'calc('+calculate_top_margin(timetable, '월')+'% + 1px)', height: 'calc('+calculate_lecture_height(timetable.start, timetable.end) + '% - 1px)'}">
+                                        <div v-if="timetable.day === '월' " class="lecture_wrap"  v-bind:style="{top: 'calc('+calculate_top_margin(timetable, '월')+'% )', height: 'calc('+calculate_lecture_height(timetable.start, timetable.end) + '% - 1px)'}">
                                             <div class="lecture_inner">
                                                 <div class="lecture_title">
                                                     {{lecture.title}}
@@ -40,25 +40,25 @@
                                     </div>
                                 </div>
                                 <div class="grids">
-                                    <div class="grid" style="border-radius: 10px 0 0 0;">&nbsp;</div>
-                                    <div class="grid">&nbsp;</div>
-                                    <div class="grid">&nbsp;</div>
-                                    <div class="grid">&nbsp;</div>
-                                    <div class="grid">&nbsp;</div>
-                                    <div class="grid">&nbsp;</div>
-                                    <div class="grid">&nbsp;</div>
-                                    <div class="grid">&nbsp;</div>
-                                    <div class="grid">&nbsp;</div>
-                                    <div class="grid">&nbsp;</div>
-                                    <div class="grid">&nbsp;</div>
-                                    <div class="grid" style="border-radius: 0 0 0 10px;">&nbsp;</div>
+                                    <div class="grid mon" style="border-radius: 10px 0 0 0;">&nbsp;</div>
+                                    <div class="grid mon">&nbsp;</div>
+                                    <div class="grid mon">&nbsp;</div>
+                                    <div class="grid mon">&nbsp;</div>
+                                    <div class="grid mon">&nbsp;</div>
+                                    <div class="grid mon">&nbsp;</div>
+                                    <div class="grid mon">&nbsp;</div>
+                                    <div class="grid mon">&nbsp;</div>
+                                    <div class="grid mon">&nbsp;</div>
+                                    <div class="grid mon">&nbsp;</div>
+                                    <div class="grid mon">&nbsp;</div>
+                                    <div class="grid mon" style="border-radius: 0 0 0 10px;">&nbsp;</div>
                                 </div>
                             </td>
-                            <td>
+                            <td style="width: calc(94% / 5 - 4px);">
                                 <div class="cols" v-for="(lecture, index) in tue" :key="index">
                                     <div v-for="(timetable, index) in lecture.timetable" :key="index">
                                         <div class="lecture_inner">
-                                            <div v-if="timetable.day === '화' " class="lecture_wrap"  v-bind:style="{top: 'calc('+calculate_top_margin(timetable, '화')+'% + 1px)', height: 'calc('+calculate_lecture_height(timetable.start, timetable.end) + '% - 1px)'}">
+                                            <div v-if="timetable.day === '화' " class="lecture_wrap"  v-bind:style="{top: 'calc('+calculate_top_margin(timetable, '화')+'% )', height: 'calc('+calculate_lecture_height(timetable.start, timetable.end) + '% - 1px)'}">
                                                 <div class="lecture_inner">
                                                     <div class="lecture_title">
                                                         {{lecture.title}}
@@ -86,10 +86,10 @@
                                     <div class="grid">&nbsp;</div>
                                 </div>
                             </td>
-                            <td>
+                            <td style="width: calc(94% / 5 - 4px);">
                                 <div class="cols" v-for="(lecture, index) in wed" :key="index">
                                     <div v-for="(timetable, index) in lecture.timetable" :key="index">
-                                        <div v-if="timetable.day === '수'" class="lecture_wrap"  v-bind:style="{top: 'calc('+calculate_top_margin(timetable, '수')+'% + 1px)', height: 'calc('+calculate_lecture_height(timetable.start, timetable.end) + '% - 1px)'}">
+                                        <div v-if="timetable.day === '수'" class="lecture_wrap"  v-bind:style="{top: 'calc('+calculate_top_margin(timetable, '수')+'% )', height: 'calc('+calculate_lecture_height(timetable.start, timetable.end) + '% - 1px)'}">
                                             <div class="lecture_inner">
                                                 <div class="lecture_title">
                                                     {{lecture.title}}
@@ -116,10 +116,10 @@
                                     <div class="grid">&nbsp;</div>
                                 </div>
                             </td>
-                            <td>
+                            <td style="width: calc(94% / 5 - 4px);">
                                 <div class="cols" v-for="(lecture, index) in thu" :key="index">
                                     <div v-for="(timetable, index) in lecture.timetable" :key="index">
-                                        <div v-if="timetable.day === '목' " class="lecture_wrap"  v-bind:style="{top: 'calc('+calculate_top_margin(timetable, '목')+'% + 1px)', height: 'calc('+calculate_lecture_height(timetable.start, timetable.end) + '% - 1px)'}">
+                                        <div v-if="timetable.day === '목' " class="lecture_wrap"  v-bind:style="{top: 'calc('+calculate_top_margin(timetable, '목')+'% )', height: 'calc('+calculate_lecture_height(timetable.start, timetable.end) + '% - 1px)'}">
                                             <div class="lecture_inner">
                                                 <div class="lecture_title">
                                                     {{lecture.title}}
@@ -147,10 +147,10 @@
                                 </div>
 
                             </td>
-                            <td>
+                            <td style="width: calc(94% / 5 - 4px); border-radius:0 10px 10px 0; overflow: hidden">
                                 <div class="cols" v-for="(lecture, index) in fri" :key="index">
                                     <div v-for="(timetable, index) in lecture.timetable" :key="index">
-                                        <div v-if="timetable.day === '금'" class="lecture_wrap"  v-bind:style="{width: 'calc(100% + 0.1px)', top: 'calc('+calculate_top_margin(timetable, '금')+'% + 1px)', height: 'calc('+calculate_lecture_height(timetable.start, timetable.end) + '% - 1px)'}">
+                                        <div v-if="timetable.day === '금'" class="lecture_wrap"  v-bind:style="{width: 'calc(100% + 0.1px)', top: 'calc('+calculate_top_margin(timetable, '금')+'%)', height: 'calc('+calculate_lecture_height(timetable.start, timetable.end) + '% - 1px)'}">
                                             <div class="lecture_inner">
                                                 <div class="lecture_title">
                                                     {{lecture.title}}
@@ -310,13 +310,13 @@
         position: absolute;
         display: inline-block;
         height: 100%;
-        overflow: hidden;
         width: 100%;
+        left: 0;
     }
     .day{
         color:#353866;
-
         font-weight: bold;
+        height: 5%;
     }
 
     .lecture_wrap{
@@ -324,8 +324,8 @@
         display: inline-block;
         overflow: hidden;
         /*top: calc(100% / 12);*/
-        left: 1px;
-        width: calc( 100% - 1px);
+        left: 0;
+        width:100%;
         font-size: 10px;
         background-color: rgba(217,219,235,1);
         text-align: left;
@@ -340,8 +340,9 @@
         font-weight: bold;
     }
     .table_head{
+        display: block;
         width: 100%;
-        height: calc(5% - 1px);
+        height: 30px;
     }
     .table_head>table{
         width: 100%;
@@ -350,17 +351,23 @@
 
     .table_head>table>thead>th{
         display: inline-block;
-        width: 10%;
+        width: 6%;
+        float: left;
+        height: 100%;
     }
+
     .table_head>table>thead>td{
-        display: inline-block;
-        width: 18%;
+        display: block;
+        width: calc(94% / 5);
+        float: left;
+        height: 100%;
     }
     .table_body{
+        display: block;
         width: 100%;
-        height: calc(95% + 1px);
-
+        height: calc(93% - 2px);
     }
+
     .table_body>table{
         display: inline-block;
         border-spacing: 0;
@@ -381,24 +388,22 @@
     .table_body>table>tbody>tr>th{
         display: inline-block;
         float: left;
-        width: calc( 10% + 2px);
+        width: 6%;
         height: 100%;
     }
-    .table_body>table>tbody>tr>th>.hours{
-        display: inline-block;
-        width: 50%;
-        float: right;
-        height: 100%;
-        text-align: right;
-    }
-
-    .table_body>table>tbody>tr>th>.hours>div{
+    .hours{
         display: block;
-        width: calc( 100% - 5px);
-        height: calc( ( (100% - 1px) / 12 ));
-        font-size: 13px;
-        text-align: right;
+        width: 100%;
+        height: 100%;
+        float: right;
+    }
 
+    .hours>div{
+        width: 60%;
+        display:block;
+        height: calc( (100% - 1px) / 12 );
+        text-align: right;
+        font-size: 13px;
     }
     .table_body>table>tbody>tr>td{
         display: inline-block;
@@ -416,16 +421,30 @@
         width: 100%;
         height: calc( (100% / 12) - 1px);
         border-bottom: 1px solid #353866;
-        border-left: 1px solid #353866;
+        /*border-left: 1px solid #353866;*/
         background-color: white;
     }
 
    .table_body>table>tbody>tr>td:last-child>.grids>.grid{
-       border-right: 1px solid #353866;
+       /*border-right: 1px solid #353866;*/
    }
 
     .grids>.grid:first-child{
-        border-top:1px solid #353866;
+        /*border-top:1px solid #353866;*/
+    }
+
+
+    .grids>.grid:last-child{
+        border-bottom: none;
+    }
+
+    .mon{
+        border-left: none;
+    }
+    td{
+        border-top: 1px solid;
+        border-bottom: 1px solid;
+        border-right: 1px solid;
     }
 
 

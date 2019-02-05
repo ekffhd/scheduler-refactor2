@@ -292,7 +292,6 @@
         max-width: 400px;
         width: 100%;
         height: 100%;
-
         margin: auto;
     }
     table{
@@ -348,7 +347,6 @@
         display: inline-block;
         width: 6%;
         float: left;
-
     }
     .table_head>table>thead>td{
         display: block;

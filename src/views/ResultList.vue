@@ -111,7 +111,6 @@
         display: inline-block;
         height: 98vh;
         min-height: 676px;
-        border: 1px solid;
     }
     #scheduler_data{
         display:block;
@@ -125,8 +124,8 @@
     }
     .number_text{
         display: inline-block;
-        font-size: 20px;
-        height: 3vh;
+        font-size: 18px;
+        height: 5vh;
     }
     #remove_button{
         display: inline-block;

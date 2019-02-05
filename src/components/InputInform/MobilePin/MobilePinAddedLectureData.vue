@@ -1,9 +1,13 @@
 <template>
     <div id="pin_added_lecture_data_wrap" @mouseenter="show = true" @mouseleave="show = false">
         <div id="lecture_data">
-            <div id="lecture_title"> <div class="wrap" style="margin-top: 5%; height: 95%;"><div class="inner">{{lecture.title}}</div></div> </div>
-            <div id="lecture_info">
-                {{lecture.professor}} &nbsp; {{lecture.classroom}} &nbsp; {{lecture.point}} 학점
+            <div id="lecture_title"> <div class="wrap"><div class="inner">{{lecture.title}}</div></div> </div>
+            <div class="lecture_info">
+                {{lecture.professor}} {{lecture.division}}반 {{lecture.classroom}}
+            </div>
+
+            <div class="lecture_info">
+                {{lecture.department}} {{lecture.code}} {{lecture.point}}학점
             </div>
             <div id="lecture_time_wrap">
                 <div class="wrap">
@@ -49,6 +53,7 @@
         width: 100%;
         height: 100%;
         margin-bottom: 5px;
+        margin-left: 10px;
     }
     /*
     #lecture_data_wrap:hover{
@@ -57,12 +62,16 @@
         background-color:rgba(170, 173, 211,0.3);
     }*/
     #lecture_title{
+
         display: inline-block;
-        float: left;
-        width: 67%;
-        height: 55%;
-        font-size: 13px;
+        top: 10%;
+        width: 65%;
+        height: 30px;
+        font-size: 12px;
         font-weight: bold;
+        float: left;
+        margin-top: 10px;
+        text-align: left;
     }
     .wrap{
         display: table;
@@ -76,11 +85,11 @@
         text-align: left;
         margin: auto;
     }
-    #lecture_info{
+    .lecture_info{
         display: inline-block;
         float: left;
         width: 67%;
-        height: 40%;
+        height: auto;
         font-size: 11px;
         text-align: left;
     }

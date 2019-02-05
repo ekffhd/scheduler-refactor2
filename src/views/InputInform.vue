@@ -1,5 +1,5 @@
 <template>
-    <div style="display: inline-block; position: absolute; top: 0; left: 0;height: 98vh; overflow: scroll; width :100vw;">
+    <div style="display: inline-block; height: 100vh;top: 0; left: 0; overflow: hidden; width :100vw;">
         <div id="input_inform_wrap">
             <div id="mobile_bar">
                 <div style="display:block; position: relative; width: 100%; height: 100%; ">
@@ -359,9 +359,8 @@
         width: 90%;
         max-width: 1100px;
         max-height: 770px;
-        min-height: 650px;
+        min-height: 630px;
         margin-top: 2%;
-
         height: 90%;
     }
     #mobile_bar{
@@ -371,8 +370,9 @@
         /*position: relative;*/
         display: table;
         width: 55%;
-        height: 100%;
+        height: 100vh;
         float: left;
+        max-height: 800px;
     }
     #scheduler_inner{
         padding-right: 6%;
@@ -390,6 +390,7 @@
     #scheduler{
         display: inline-block;
         width: 80%;
+        padding-left: 5%;
         height: 70%;
     }
     #option_select_wrap{
@@ -504,10 +505,12 @@
     }
     @media ( max-width: 769px){
         #input_inform_wrap{
+            display: inline-block;
             position: relative;
             width: 100vw;
             margin-top: 0;
             height: 100%;
+
         }
         .wrap{
             display: table;

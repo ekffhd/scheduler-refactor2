@@ -15,7 +15,7 @@
   }
   #app {
     display: block;
-    position: relative;
+
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -34,6 +34,14 @@
       padding-top: 10vh;
       height: 100vh;
   }
+
+    @media(max-width: 769px){
+        #app{
+            overflow: hidden;
+            height: 100vh;
+            background-color:red;
+        }
+    }
 
 
 </style>

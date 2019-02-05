@@ -22,8 +22,13 @@
                         </div>
                     </div>
                 </div>
-                <div id="lecture_info">
-                    {{lecture.professor}} &nbsp; {{lecture.classroom}} &nbsp; {{lecture.point}} 학점
+
+                <div class="lecture_info">
+                    {{lecture.professor}} {{lecture.division}}반 {{lecture.classroom}}
+                </div>
+
+                <div class="lecture_info">
+                    {{lecture.department}} {{lecture.code}} {{lecture.point}}학점
                 </div>
                 <div id="lecture_time_wrap">
                     <div class="wrap">
@@ -142,16 +147,17 @@
         width: 100%;
         height: 90px;
         cursor: pointer;
+        padding-left: 10px;
     }
     #lecture_title{
-        position: absolute;
         display: inline-block;
         top: 10%;
-        left: 3%;
         width: 65%;
-        height: 45%;
+        height: 30px;
         font-size: 12px;
         font-weight: bold;
+        float: left;
+        margin-top: 10px;
         text-align: left;
      }
     .wrap{
@@ -165,14 +171,13 @@
         vertical-align: middle;
         text-align: left;
     }
-    #lecture_info{
+    .lecture_info{
         display: inline-block;
-        position: absolute;
         float: left;
         top:55%;
         left: 3%;
         width: 65%;
-        height: 40%;
+        height: auto;
         font-size: 11px;
         text-align: left;
     }

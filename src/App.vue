@@ -39,7 +39,6 @@
         #app{
             overflow: hidden;
             height: 100vh;
-            background-color:red;
         }
     }
 

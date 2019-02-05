@@ -13,6 +13,8 @@
             <input id="set_point_input"/>
             <p id="left_point">남은 학점 : 10</p>
         </div>-->
+        <div id="warning">선택된 공강시간에 해당하는 강의들은 결과에 나오지 않습니다</div>
+
         <div id="break_wrap">
             <i class="fas fa-plus-circle" @click="add_break_time()"></i>
             <div id="set_break_wrap">
@@ -200,11 +202,20 @@
     #set_point_input:focus{
         box-shadow: 1px 1px 5px;
     }
+    #warning{
+        display: inline-block;
+        font-size: 11px;
+        color: gray;
+        width: 100%;
+        float: left;
+        height: 20px;
+
+    }
 
     #break_wrap{
         display: inline-block;
         width: 100%;
-        height: 90%;
+        height: calc(90% - 20px);
     }
     #break_wrap > i{
         display: inline-block;

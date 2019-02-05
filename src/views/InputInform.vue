@@ -1,9 +1,9 @@
 <template>
-    <div style="display: inline-block; height: 100vh;top: 0; left: 0; overflow: hidden; width :100vw;">
+    <div id="main_wrap" style="display: inline-block; height: 100vh; top: 0; left: 0;  width :100vw;">
         <div id="input_inform_wrap">
             <div id="mobile_bar">
                 <div style="display:block; position: relative; width: 100%; height: 100%; ">
-                    <div class="wrap" style="position: absolute; width: 100%; height: 7vh;">
+                    <div class="wrap" style="position: absolute; width: 100%; height: 7vh; ">
                         <div class="inner">
                             <img id="mobile_caser_icon" src="../assets/Caser2.png" >
                         </div>
@@ -332,6 +332,9 @@
         margin: 0;
         padding: 0;
     }
+    #main_wrap{
+        overflow: scroll;
+    }
     #input_inform_wrapper{
         display: table;
         width: 100%;
@@ -370,8 +373,9 @@
         /*position: relative;*/
         display: table;
         width: 55%;
-        height: 100vh;
+        height: 90vh;
         float: left;
+        min-height: 600px;
         max-height: 800px;
     }
     #scheduler_inner{
@@ -403,7 +407,7 @@
     #input_basic_inform_wrap{
         display: inline-block;
         width: 80%;
-        height: 15%;
+        height: 12%;
     }
     #lecture_type_button_wrap{
         display: inline-block;
@@ -504,6 +508,9 @@
         }
     }
     @media ( max-width: 769px){
+        #main_wrap{
+           overflow: hidden;
+        }
         #input_inform_wrap{
             display: inline-block;
             position: relative;
